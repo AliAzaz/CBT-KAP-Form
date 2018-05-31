@@ -168,6 +168,7 @@ public class SectionBActivity extends AppCompatActivity {
         sB.put("ckb1198", bi.ckb1198.isChecked() ? "98" : "0");
 
 
+
         sB.put("ckb1196x", bi.ckb1196x.getText().toString());
 
 
