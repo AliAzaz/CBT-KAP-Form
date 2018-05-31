@@ -13,7 +13,7 @@ import org.json.JSONObject;
 
 public class FormsContract {
 
-    private String projectName = "WFP-Phisin Recruitment Form";
+    private String projectName = "CBT-KAP Form";
     private String surveyType = "BL";
     private String _ID = "";
     private String _UID = "";

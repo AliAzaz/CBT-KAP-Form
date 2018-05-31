@@ -18,7 +18,6 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-import edu.aku.hassannaqvi.wfp_recruit_form.contracts.FamilyMembersContract.familyMembers;
 import edu.aku.hassannaqvi.wfp_recruit_form.contracts.FormsContract;
 import edu.aku.hassannaqvi.wfp_recruit_form.contracts.FormsContract.FormsTable;
 import edu.aku.hassannaqvi.wfp_recruit_form.contracts.UsersContract;
@@ -33,9 +32,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + UsersContract.UsersTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + UsersContract.UsersTable.ROW_USERNAME + " TEXT,"
             + UsersContract.UsersTable.ROW_PASSWORD + " TEXT );";
-    public static final String DATABASE_NAME = "wfp_phisin_rf.db";
+    public static final String DATABASE_NAME = "cbt_kap_form.db";
     public static final String DB_NAME = DATABASE_NAME.replace(".", "_copy.");
-    public static final String PROJECT_NAME = "WFP-PHISIN-RECRUITMENT-FORM";
+    public static final String PROJECT_NAME = "CBT-KAP-FORM";
     private static final int DATABASE_VERSION = 1;
     private static final String SQL_CREATE_FORMS = "CREATE TABLE "
             + FormsTable.TABLE_NAME + "("
@@ -74,53 +73,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FormsTable.COLUMN_APPVERSION + " TEXT"
             + " );";
 
-    private static final String SQL_CREATE_FAMILY_MEMEBERS = "CREATE TABLE "
-            + familyMembers.TABLE_NAME + "("
-            + familyMembers.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + familyMembers.COLUMN_PROJECT_NAME + " TEXT,"
-            + familyMembers.COLUMN_UID + " TEXT UNIQUE," +
-            familyMembers.COLUMN_UUID + " TEXT," +
-            familyMembers.COLUMN_FORMDATE + " TEXT," +
-            familyMembers.COLUMN_INTERVIEWER1 + " TEXT,"+
-            familyMembers.COLUMN_INTERVIEWER2 + " TEXT,"+
-            familyMembers.COLUMN_SB + " TEXT," +
-            familyMembers.COLUMN_DEVICEID + " TEXT," +
-            familyMembers.COLUMN_DEVICETAGID + " TEXT," +
-            familyMembers.COLUMN_APP_VERSION + " TEXT," +
-            familyMembers.COLUMN_SYNCED + " TEXT," +
-            familyMembers.COLUMN_SYNCED_DATE + " TEXT"
-            + " );";
-
 
     private static final String SQL_DELETE_USERS =
             "DROP TABLE IF EXISTS " + UsersContract.UsersTable.TABLE_NAME;
     private static final String SQL_DELETE_FORMS =
             "DROP TABLE IF EXISTS " + FormsTable.TABLE_NAME;
-    private static final String SQL_DELETE_FMC =
-            "DROP TABLE IF EXISTS " + familyMembers.TABLE_NAME;
 
-
-    private static final String SQL_DELETE_VILLAGES = "DROP TABLE IF EXISTS " + VillagesContract.singleVillages.TABLE_NAME;
-    private static final String SQL_DELETE_TEHSILS = "DROP TABLE IF EXISTS " + TehsilContract.singleTehsil.TABLE_NAME;
-    private static final String SQL_DELETE_UCS = "DROP TABLE IF EXISTS " + UCsContract.singleUCs.TABLE_NAME;
-    private static final String SQL_DELETE_LHWs = "DROP TABLE IF EXISTS " + LHWsContract.singleLHWs.TABLE_NAME;
-    final String SQL_CREATE_VILLAGES = "CREATE TABLE " + VillagesContract.singleVillages.TABLE_NAME + "("
-//                + singleVillages.COLUMN_ID + " TEXT,"
-            + VillagesContract.singleVillages.COLUMN_VILLAGE_NAME + " TEXT,"
-            + VillagesContract.singleVillages.COLUMN_UC_CODE + " TEXT,"
-//                + singleVillages.COLUMN_TEHSIL_NAME + " TEXT,"
-            + VillagesContract.singleVillages.COLUMN_VILLAGE_CODE + " TEXT );";
-    final String SQL_CREATE_LHWS = "CREATE TABLE " + LHWsContract.singleLHWs.TABLE_NAME + "("
-            + LHWsContract.singleLHWs.COLUMN_LHW_NAME + " TEXT,"
-            + LHWsContract.singleLHWs.COLUMN_HF_CODE + " TEXT,"
-            + LHWsContract.singleLHWs.COLUMN_LHW_CODE + " TEXT );";
-    final String SQL_CREATE_TEHSILS = "CREATE TABLE " + TehsilContract.singleTehsil.TABLE_NAME + "("
-            + TehsilContract.singleTehsil.COLUMN_TEHSIL_CODE + " TEXT,"
-            + TehsilContract.singleTehsil.COLUMN_TEHSIL_NAME + " TEXT );";
-    final String SQL_CREATE_UCS = "CREATE TABLE " + UCsContract.singleUCs.TABLE_NAME + "("
-            + UCsContract.singleUCs.COLUMN_UCCODE + " TEXT,"
-            + UCsContract.singleUCs.COLUMN_TEHSIL_CODE + " TEXT,"
-            + UCsContract.singleUCs.COLUMN_UCS + " TEXT );";
 
     private final String TAG = "DatabaseHelper";
 
@@ -137,12 +95,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         db.execSQL(SQL_CREATE_USERS);
         db.execSQL(SQL_CREATE_FORMS);
-        db.execSQL(SQL_CREATE_FAMILY_MEMEBERS);
-
-        db.execSQL(SQL_CREATE_VILLAGES);
-        db.execSQL(SQL_CREATE_TEHSILS);
-        db.execSQL(SQL_CREATE_UCS);
-        db.execSQL(SQL_CREATE_LHWS);
 
     }
 
@@ -150,188 +102,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL(SQL_DELETE_USERS);
         db.execSQL(SQL_DELETE_FORMS);
-        db.execSQL(SQL_DELETE_FMC);
-
-        db.execSQL(SQL_DELETE_VILLAGES);
-        db.execSQL(SQL_DELETE_TEHSILS);
-        db.execSQL(SQL_DELETE_UCS);
-        db.execSQL(SQL_DELETE_LHWs);
     }
-
-
-    public Collection<VillagesContract> getVillages(String uccode) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = null;
-        String[] columns = {
-//                singleVillages.COLUMN_ID,
-                VillagesContract.singleVillages.COLUMN_VILLAGE_NAME,
-                VillagesContract.singleVillages.COLUMN_UC_CODE,
-//                singleVillages.COLUMN_TEHSIL_NAME,
-                VillagesContract.singleVillages.COLUMN_VILLAGE_CODE,
-        };
-
-        String whereClause = VillagesContract.singleVillages.COLUMN_UC_CODE + " =?";
-        String[] whereArgs = {uccode};
-        String groupBy = null;
-        String having = null;
-
-        String orderBy =
-                VillagesContract.singleVillages.COLUMN_VILLAGE_NAME + " ASC";
-
-        Collection<VillagesContract> allDC = new ArrayList<>();
-        try {
-            c = db.query(
-                    VillagesContract.singleVillages.TABLE_NAME,  // The table to query
-                    columns,                   // The columns to return
-                    whereClause,               // The columns for the WHERE clause
-                    whereArgs,                 // The values for the WHERE clause
-                    groupBy,                   // don't group the rows
-                    having,                    // don't filter by row groups
-                    orderBy                    // The sort order
-            );
-            while (c.moveToNext()) {
-                VillagesContract dc = new VillagesContract();
-                allDC.add(dc.HydrateVillages(c));
-            }
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-            if (db != null) {
-                db.close();
-            }
-        }
-        return allDC;
-    }
-
-    public Collection<LHWsContract> getLHWs(String uccode) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = null;
-        String[] columns = {
-                LHWsContract.singleLHWs.COLUMN_LHW_NAME,
-                LHWsContract.singleLHWs.COLUMN_HF_CODE,
-                LHWsContract.singleLHWs.COLUMN_LHW_CODE,
-        };
-
-        String whereClause = LHWsContract.singleLHWs.COLUMN_HF_CODE + " =?";
-        String[] whereArgs = {uccode};
-        String groupBy = null;
-        String having = null;
-
-        String orderBy =
-                LHWsContract.singleLHWs.COLUMN_LHW_NAME + " ASC";
-
-        Collection<LHWsContract> allDC = new ArrayList<>();
-        try {
-            c = db.query(
-                    LHWsContract.singleLHWs.TABLE_NAME,  // The table to query
-                    columns,                   // The columns to return
-                    whereClause,               // The columns for the WHERE clause
-                    whereArgs,                 // The values for the WHERE clause
-                    groupBy,                   // don't group the rows
-                    having,                    // don't filter by row groups
-                    orderBy                    // The sort order
-            );
-            while (c.moveToNext()) {
-                LHWsContract dc = new LHWsContract();
-                allDC.add(dc.HydrateLHWs(c));
-            }
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-            if (db != null) {
-                db.close();
-            }
-        }
-        return allDC;
-    }
-
-    public Collection<TehsilContract> getAllTehsils() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = null;
-        String[] columns = {
-                TehsilContract.singleTehsil.COLUMN_TEHSIL_CODE,
-                TehsilContract.singleTehsil.COLUMN_TEHSIL_NAME
-        };
-
-        String whereClause = null;
-        String[] whereArgs = null;
-        String groupBy = null;
-        String having = null;
-
-        String orderBy =
-                TehsilContract.singleTehsil.COLUMN_TEHSIL_NAME + " ASC";
-
-        Collection<TehsilContract> allDC = new ArrayList<>();
-        try {
-            c = db.query(
-                    TehsilContract.singleTehsil.TABLE_NAME,  // The table to query
-                    columns,                   // The columns to return
-                    whereClause,               // The columns for the WHERE clause
-                    whereArgs,                 // The values for the WHERE clause
-                    groupBy,                   // don't group the rows
-                    having,                    // don't filter by row groups
-                    orderBy                    // The sort order
-            );
-            while (c.moveToNext()) {
-                TehsilContract dc = new TehsilContract();
-                allDC.add(dc.HydrateTehsils(c));
-            }
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-            if (db != null) {
-                db.close();
-            }
-        }
-        return allDC;
-    }
-
-    public Collection<UCsContract> getAllUCs(String talukaCode) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = null;
-        String[] columns = {
-                UCsContract.singleUCs.COLUMN_UCCODE,
-                UCsContract.singleUCs.COLUMN_UCS,
-                UCsContract.singleUCs.COLUMN_TEHSIL_CODE
-        };
-
-        String whereClause = UCsContract.singleUCs.COLUMN_TEHSIL_CODE + "=?";
-        String[] whereArgs = new String[]{talukaCode};
-        String groupBy = null;
-        String having = null;
-
-        String orderBy =
-                UCsContract.singleUCs.COLUMN_UCS + " ASC";
-
-        Collection<UCsContract> allDC = new ArrayList<>();
-        try {
-            c = db.query(
-                    UCsContract.singleUCs.TABLE_NAME,  // The table to query
-                    columns,                   // The columns to return
-                    whereClause,               // The columns for the WHERE clause
-                    whereArgs,                 // The values for the WHERE clause
-                    groupBy,                   // don't group the rows
-                    having,                    // don't filter by row groups
-                    orderBy                    // The sort order
-            );
-            while (c.moveToNext()) {
-                UCsContract dc = new UCsContract();
-                allDC.add(dc.HydrateUCs(c));
-            }
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-            if (db != null) {
-                db.close();
-            }
-        }
-        return allDC;
-    }
-
 
     public ArrayList<UsersContract> getAllUsers() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -379,107 +150,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         } catch (Exception e) {
         }
     }
-    public void syncLHWs(JSONArray LHWslist) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(LHWsContract.singleLHWs.TABLE_NAME, null, null);
-        try {
-            JSONArray jsonArray = LHWslist;
-            for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject jsonObjectCC = jsonArray.getJSONObject(i);
-
-                LHWsContract Vc = new LHWsContract();
-                Vc.Sync(jsonObjectCC);
-
-                ContentValues values = new ContentValues();
-
-                values.put(LHWsContract.singleLHWs.COLUMN_LHW_NAME, Vc.getLhwname());
-                values.put(LHWsContract.singleLHWs.COLUMN_HF_CODE, Vc.getHf_code());
-                values.put(LHWsContract.singleLHWs.COLUMN_LHW_CODE, Vc.getLhwcode());
-
-                db.insert(LHWsContract.singleLHWs.TABLE_NAME, null, values);
-            }
-        } catch (Exception e) {
-        } finally {
-            db.close();
-        }
-    }
-
-    public void syncVillages(JSONArray Villageslist) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(VillagesContract.singleVillages.TABLE_NAME, null, null);
-        try {
-            JSONArray jsonArray = Villageslist;
-            for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject jsonObjectCC = jsonArray.getJSONObject(i);
-
-                VillagesContract Vc = new VillagesContract();
-                Vc.Sync(jsonObjectCC);
-
-                ContentValues values = new ContentValues();
-
-//                values.put(singleVillages.COLUMN_ID, Vc.getID());
-                values.put(VillagesContract.singleVillages.COLUMN_VILLAGE_NAME, Vc.getVillagename());
-                values.put(VillagesContract.singleVillages.COLUMN_UC_CODE, Vc.getUc_code());
-//                values.put(singleVillages.COLUMN_TEHSIL_NAME, Vc.getTehsil_name());
-                values.put(VillagesContract.singleVillages.COLUMN_VILLAGE_CODE, Vc.getVillagecode());
-
-                db.insert(VillagesContract.singleVillages.TABLE_NAME, null, values);
-            }
-        } catch (Exception e) {
-        } finally {
-            db.close();
-        }
-    }
-
-    public void syncTehsil(JSONArray Tehsillist) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TehsilContract.singleTehsil.TABLE_NAME, null, null);
-        try {
-            JSONArray jsonArray = Tehsillist;
-            for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject jsonObjectCC = jsonArray.getJSONObject(i);
-
-                TehsilContract Vc = new TehsilContract();
-                Vc.Sync(jsonObjectCC);
-
-                ContentValues values = new ContentValues();
-
-                values.put(TehsilContract.singleTehsil.COLUMN_TEHSIL_CODE, Vc.getTehsilcode());
-                values.put(TehsilContract.singleTehsil.COLUMN_TEHSIL_NAME, Vc.getTehsil_name());
-
-                db.insert(TehsilContract.singleTehsil.TABLE_NAME, null, values);
-            }
-        } catch (Exception e) {
-        } finally {
-            db.close();
-        }
-    }
-
-    public void syncUCs(JSONArray UCslist) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(UCsContract.singleUCs.TABLE_NAME, null, null);
-        try {
-            JSONArray jsonArray = UCslist;
-            for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject jsonObjectCC = jsonArray.getJSONObject(i);
-
-                UCsContract Vc = new UCsContract();
-                Vc.Sync(jsonObjectCC);
-
-                ContentValues values = new ContentValues();
-
-                values.put(UCsContract.singleUCs.COLUMN_UCCODE, Vc.getUccode());
-                values.put(UCsContract.singleUCs.COLUMN_UCS, Vc.getUcs());
-                values.put(UCsContract.singleUCs.COLUMN_TEHSIL_CODE, Vc.getTehsil_code());
-
-                db.insert(UCsContract.singleUCs.TABLE_NAME, null, values);
-            }
-        } catch (Exception e) {
-        } finally {
-            db.close();
-        }
-    }
-
 
     public boolean Login(String username, String password) throws SQLException {
 
@@ -578,37 +248,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return newRowId;
     }
 
-
-    public Long addFamilyMembers(FamilyMembersContract fmc) {
-
-        // Gets the data repository in write mode
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        // Create a new map of values, where column names are the keys
-        ContentValues values = new ContentValues();
-        values.put(familyMembers.COLUMN_PROJECT_NAME, fmc.getProjectName());
-        values.put(familyMembers.COLUMN_UID, fmc.get_UID());
-        values.put(familyMembers.COLUMN_UUID, fmc.get_UUID());
-        values.put(familyMembers.COLUMN_FORMDATE, fmc.getFormDate());
-        values.put(familyMembers.COLUMN_INTERVIEWER1, fmc.getInterviewer1());
-        values.put(familyMembers.COLUMN_INTERVIEWER2, fmc.getInterviewer2());
-        values.put(familyMembers.COLUMN_DEVICETAGID, fmc.getDevicetagID());
-        values.put(familyMembers.COLUMN_DEVICEID, fmc.getDeviceId());
-        values.put(familyMembers.COLUMN_SB, fmc.getsB());
-        values.put(familyMembers.COLUMN_SYNCED, fmc.getSynced());
-        values.put(familyMembers.COLUMN_SYNCED_DATE, fmc.getSyncedDate());
-        values.put(familyMembers.COLUMN_APP_VERSION, fmc.getApp_ver());
-
-        // Insert the new row, returning the primary key value of the new row
-        long newRowId;
-        newRowId = db.insert(
-                familyMembers.TABLE_NAME,
-                familyMembers.COLUMN_NAME_NULLABLE,
-                values);
-        return newRowId;
-    }
-
-
     public void updateSyncedForms(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -628,75 +267,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 whereArgs);
     }
 
-    public void updateSyncedFamilyMembers(String id) {
-        SQLiteDatabase db = this.getReadableDatabase();
-
-// New value for one column
-        ContentValues values = new ContentValues();
-        values.put(familyMembers.COLUMN_SYNCED, true);
-        values.put(familyMembers.COLUMN_SYNCED_DATE, new Date().toString());
-
-// Which row to update, based on the title
-        String where = familyMembers.COLUMN_ID + " = ?";
-        String[] whereArgs = {id};
-
-        int count = db.update(
-                familyMembers.TABLE_NAME,
-                values,
-                where,
-                whereArgs);
-    }
-
-    public Collection<FamilyMembersContract> getUnsyncedFamilyMembers() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = null;
-        String[] columns = {
-                familyMembers.COLUMN_ID,
-                familyMembers.COLUMN_UID,
-                familyMembers.COLUMN_UUID,
-                familyMembers.COLUMN_FORMDATE,
-                familyMembers.COLUMN_INTERVIEWER1,
-                familyMembers.COLUMN_INTERVIEWER2,
-                familyMembers.COLUMN_SB,
-                familyMembers.COLUMN_DEVICETAGID,
-                familyMembers.COLUMN_DEVICEID,
-                familyMembers.COLUMN_APP_VERSION,
-        };
-        String whereClause = familyMembers.COLUMN_SYNCED + " is null OR " + familyMembers.COLUMN_SYNCED + " = '' ";
-        String[] whereArgs = null;
-        String groupBy = null;
-        String having = null;
-
-        String orderBy =
-                familyMembers.COLUMN_ID + " ASC";
-
-        Collection<FamilyMembersContract> allFC = new ArrayList<FamilyMembersContract>();
-        try {
-            c = db.query(
-                    familyMembers.TABLE_NAME,  // The table to query
-                    columns,                   // The columns to return
-                    whereClause,               // The columns for the WHERE clause
-                    whereArgs,                 // The values for the WHERE clause
-                    groupBy,                   // don't group the rows
-                    having,                    // don't filter by row groups
-                    orderBy                    // The sort order
-            );
-            while (c.moveToNext()) {
-                FamilyMembersContract fc = new FamilyMembersContract();
-                allFC.add(fc.Hydrate(c));
-            }
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-            if (db != null) {
-                db.close();
-            }
-        }
-        return allFC;
-    }
-
-
     public int updateFormID() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -714,25 +284,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selectionArgs);
         return count;
     }
-
-    public int updateFamilyMemberID() {
-        SQLiteDatabase db = this.getReadableDatabase();
-
-// New value for one column
-        ContentValues values = new ContentValues();
-        values.put(familyMembers.COLUMN_UID, MainApp.fmc.get_UID());
-
-// Which row to update, based on the ID
-        String selection = familyMembers.COLUMN_ID + " = ?";
-        String[] selectionArgs = {String.valueOf(MainApp.fmc.get_ID())};
-
-        int count = db.update(familyMembers.TABLE_NAME,
-                values,
-                selection,
-                selectionArgs);
-        return count;
-    }
-
 
     public Collection<FormsContract> getUnsyncedForms() {
         SQLiteDatabase db = this.getReadableDatabase();

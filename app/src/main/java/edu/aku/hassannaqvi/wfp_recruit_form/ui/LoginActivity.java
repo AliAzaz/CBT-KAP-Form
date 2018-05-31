@@ -223,7 +223,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
     public void dbBackup() {
 
-        sharedPref = getSharedPreferences("dss01", MODE_PRIVATE);
+        sharedPref = getSharedPreferences("cbt_kap_form", MODE_PRIVATE);
         editor = sharedPref.edit();
 
         if (sharedPref.getBoolean("flag", false)) {
@@ -236,7 +236,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                 editor.commit();
             }
 
-            File folder = new File(Environment.getExternalStorageDirectory() + File.separator + "DMU-PISHIN");
+            File folder = new File(Environment.getExternalStorageDirectory() + File.separator + "DMU-CBT-KAP");
             boolean success = true;
             if (!folder.exists()) {
                 success = folder.mkdirs();

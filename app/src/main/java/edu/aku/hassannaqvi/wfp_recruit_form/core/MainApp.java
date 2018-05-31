@@ -32,10 +32,10 @@ public class MainApp extends Application {
 
     public static final String _IP = "43.245.131.159"; // Test PHP server
     public static final Integer _PORT = 8080; // Port - with colon (:)
-    public static final String _HOST_URL = "http://" + MainApp._IP + ":" + MainApp._PORT + "/wfp_recruit_form/api/";
-    public static final String TEST_URL = "http://" + MainApp._IP + ":" + MainApp._PORT + "/wfp-pishin/api/";
+    public static final String _HOST_URL = "http://" + MainApp._IP + ":" + MainApp._PORT + "/cbt_kap/api/";
+    public static final String TEST_URL = "http://" + MainApp._IP + ":" + MainApp._PORT + "/cbt_kap/api/";
 
-    public static final String _UPDATE_URL = "http://" + MainApp._IP + ":" + MainApp._PORT + "/wfp_recruit_form/app/app-debug.apk";
+    public static final String _UPDATE_URL = "http://" + MainApp._IP + ":" + MainApp._PORT + "/cbt_kap/app/app-debug.apk";
 
     public static final Integer MONTHS_LIMIT = 11;
     public static final Integer DAYS_LIMIT = 29;
@@ -65,7 +65,6 @@ public class MainApp extends Application {
 
     public static Boolean admin = false;
     public static FormsContract fc;
-    public static FamilyMembersContract fmc;
     public static String userName = "0000";
     public static int versionCode;
     public static String versionName;

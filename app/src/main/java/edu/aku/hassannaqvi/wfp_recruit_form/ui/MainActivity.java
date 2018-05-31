@@ -255,7 +255,7 @@ public class MainActivity extends Activity {
     }
 
     public void openForm() {
-        final Intent oF = new Intent(MainActivity.this, SectionAActivity.class);
+        final Intent oF = new Intent(MainActivity.this, SectionDActivity.class);
 
         if (sharedPref.getString("tagName", null) != "" && sharedPref.getString("tagName", null) != null && !MainApp.userName.equals("0000")) {
             startActivity(oF);
@@ -384,7 +384,6 @@ public class MainActivity extends Activity {
             DatabaseHelper db = new DatabaseHelper(this);
 
             Toast.makeText(getApplicationContext(), "Syncing Forms", Toast.LENGTH_SHORT).show();
-            new SyncForms(this, true).execute();
 
             new SyncAllData(
                     this,
@@ -394,17 +393,6 @@ public class MainActivity extends Activity {
                     MainApp._HOST_URL + FormsContract.FormsTable._URL,
                     db.getUnsyncedForms()
             ).execute();
-
-            Toast.makeText(getApplicationContext(), "Syncing Family Members", Toast.LENGTH_SHORT).show();
-            new SyncAllData(
-                    this,
-                    "Family Members",
-                    "updateSyncedFamilyMembers",
-                    FamilyMembersContract.class,
-                    MainApp._HOST_URL + FamilyMembersContract.familyMembers._URL,
-                    db.getUnsyncedFamilyMembers()
-            ).execute();
-
 
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = syncPref.edit();
@@ -464,19 +452,19 @@ public class MainActivity extends Activity {
 
     public void openA(View v) {
 
-        startActivity1(SectionAActivity.class);
+//        startActivity1(SectionAActivity.class);
 
     }
 
     public void openB(View v) {
 
-        startActivity1(SectionBActivity.class);
+//        startActivity1(SectionBActivity.class);
 
     }
 
     public void openC(View v) {
 
-        startActivity1(SectionCActivity.class);
+//        startActivity1(SectionCActivity.class);
 
     }
 
@@ -488,49 +476,25 @@ public class MainActivity extends Activity {
 
     public void openE(View v) {
 
-        startActivity1(SectionEActivity.class);
+//        startActivity1(SectionEActivity.class);
 
     }
 
     public void openF(View v) {
 
-        startActivity1(SectionFActivity.class);
+//        startActivity1(SectionFActivity.class);
 
     }
 
     public void openG(View v) {
 
-        startActivity1(SectionGActivity.class);
+//        startActivity1(SectionGActivity.class);
 
     }
 
     public void openH(View v) {
 
-        startActivity1(SectionHActivity.class);
-
-    }
-
-    public void openI(View v) {
-
-        startActivity1(SectionIActivity.class);
-
-    }
-
-    public void openJ(View v) {
-
-        startActivity1(SectionJActivity.class);
-
-    }
-
-    public void openK(View v) {
-
-        startActivity1(SectionKActivity.class);
-
-    }
-
-    public void openLMO(View v) {
-
-        startActivity1(SectionlmoActivity.class);
+//        startActivity1(SectionHActivity.class);
 
     }
 
