@@ -1,4 +1,4 @@
-package edu.aku.hassannaqvi.wfp_recruit_form.ui;
+package edu.aku.hassannaqvi.cbt_kap_form.ui;
 
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
@@ -9,7 +9,7 @@ import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 
-import edu.aku.hassannaqvi.wfp_recruit_form.R;
+import edu.aku.hassannaqvi.cbt_kap_form.R;
 
 
 /**

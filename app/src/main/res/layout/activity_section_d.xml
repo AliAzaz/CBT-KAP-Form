@@ -10,7 +10,7 @@
 
         <variable
             name="callback"
-            type="edu.aku.hassannaqvi.wfp_recruit_form.ui.SectionDActivity" />
+            type="edu.aku.hassannaqvi.cbt_kap_form.ui.SectionDActivity" />
     </data>
 
     <LinearLayout

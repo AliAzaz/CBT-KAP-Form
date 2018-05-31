@@ -1,4 +1,4 @@
-package edu.aku.hassannaqvi.wfp_recruit_form;
+package edu.aku.hassannaqvi.cbt_kap_form;
 
 import org.junit.Test;
 

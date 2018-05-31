@@ -182,7 +182,7 @@
     android:fitsSystemWindows="true"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context="edu.aku.hassannaqvi.wfp_recruit_form.ui.LoginActivity">
+    tools:context="edu.aku.hassannaqvi.cbt_kap_form.ui.LoginActivity">
 
     <!-- Login progress -->
     <ProgressBar

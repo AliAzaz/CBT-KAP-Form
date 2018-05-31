@@ -1,4 +1,4 @@
-package edu.aku.hassannaqvi.wfp_recruit_form.ui;
+package edu.aku.hassannaqvi.cbt_kap_form.ui;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -11,10 +11,10 @@ import org.json.JSONException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import edu.aku.hassannaqvi.wfp_recruit_form.R;
-import edu.aku.hassannaqvi.wfp_recruit_form.core.DatabaseHelper;
-import edu.aku.hassannaqvi.wfp_recruit_form.core.MainApp;
-import edu.aku.hassannaqvi.wfp_recruit_form.databinding.ActivityEndingBinding;
+import edu.aku.hassannaqvi.cbt_kap_form.R;
+import edu.aku.hassannaqvi.cbt_kap_form.core.DatabaseHelper;
+import edu.aku.hassannaqvi.cbt_kap_form.core.MainApp;
+import edu.aku.hassannaqvi.cbt_kap_form.databinding.ActivityEndingBinding;
 
 public class EndingActivity extends AppCompatActivity {
 

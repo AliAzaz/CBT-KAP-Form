@@ -1,4 +1,4 @@
-package edu.aku.hassannaqvi.wfp_recruit_form.core;
+package edu.aku.hassannaqvi.cbt_kap_form.core;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
@@ -10,9 +10,9 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import static edu.aku.hassannaqvi.wfp_recruit_form.contracts.FormsContract.CONTENT_AUTHORITY;
-import static edu.aku.hassannaqvi.wfp_recruit_form.contracts.FormsContract.FormsTable;
-import static edu.aku.hassannaqvi.wfp_recruit_form.contracts.FormsContract.PATH_FORMS;
+import static edu.aku.hassannaqvi.cbt_kap_form.contracts.FormsContract.CONTENT_AUTHORITY;
+import static edu.aku.hassannaqvi.cbt_kap_form.contracts.FormsContract.FormsTable;
+import static edu.aku.hassannaqvi.cbt_kap_form.contracts.FormsContract.PATH_FORMS;
 
 
 public class MainContentProvider extends ContentProvider {

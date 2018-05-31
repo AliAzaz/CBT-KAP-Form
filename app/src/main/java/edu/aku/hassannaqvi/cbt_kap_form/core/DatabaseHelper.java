@@ -1,4 +1,4 @@
-package edu.aku.hassannaqvi.wfp_recruit_form.core;
+package edu.aku.hassannaqvi.cbt_kap_form.core;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -18,9 +18,9 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-import edu.aku.hassannaqvi.wfp_recruit_form.contracts.FormsContract;
-import edu.aku.hassannaqvi.wfp_recruit_form.contracts.FormsContract.FormsTable;
-import edu.aku.hassannaqvi.wfp_recruit_form.contracts.UsersContract;
+import edu.aku.hassannaqvi.cbt_kap_form.contracts.FormsContract;
+import edu.aku.hassannaqvi.cbt_kap_form.contracts.FormsContract.FormsTable;
+import edu.aku.hassannaqvi.cbt_kap_form.contracts.UsersContract;
 
 /**
  * Created by hassan.naqvi on 11/30/2016.

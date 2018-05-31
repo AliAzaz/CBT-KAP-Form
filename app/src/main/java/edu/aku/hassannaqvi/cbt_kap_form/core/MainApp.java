@@ -1,4 +1,4 @@
-package edu.aku.hassannaqvi.wfp_recruit_form.core;
+package edu.aku.hassannaqvi.cbt_kap_form.core;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -21,8 +21,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import edu.aku.hassannaqvi.wfp_recruit_form.contracts.FormsContract;
-import edu.aku.hassannaqvi.wfp_recruit_form.ui.EndingActivity;
+import edu.aku.hassannaqvi.cbt_kap_form.contracts.FormsContract;
+import edu.aku.hassannaqvi.cbt_kap_form.ui.EndingActivity;
 
 /**
  * Created by hassan.naqvi on 11/30/2016.

@@ -1,4 +1,4 @@
-package edu.aku.hassannaqvi.wfp_recruit_form.get;
+package edu.aku.hassannaqvi.cbt_kap_form.get;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -15,9 +15,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import edu.aku.hassannaqvi.wfp_recruit_form.contracts.UsersContract.UsersTable;
-import edu.aku.hassannaqvi.wfp_recruit_form.core.DatabaseHelper;
-import edu.aku.hassannaqvi.wfp_recruit_form.core.MainApp;
+import edu.aku.hassannaqvi.cbt_kap_form.contracts.UsersContract.UsersTable;
+import edu.aku.hassannaqvi.cbt_kap_form.core.DatabaseHelper;
+import edu.aku.hassannaqvi.cbt_kap_form.core.MainApp;
 
 /**
  * Created by ali.azaz on 7/14/2017.

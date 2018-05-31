@@ -1,4 +1,4 @@
-package edu.aku.hassannaqvi.wfp_recruit_form.sync;
+package edu.aku.hassannaqvi.cbt_kap_form.sync;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -23,7 +23,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collection;
 
-import edu.aku.hassannaqvi.wfp_recruit_form.core.DatabaseHelper;
+import edu.aku.hassannaqvi.cbt_kap_form.core.DatabaseHelper;
 
 /**
  * Created by ali.azaz on 3/14/2018.

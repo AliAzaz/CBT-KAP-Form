@@ -1,4 +1,4 @@
-package edu.aku.hassannaqvi.wfp_recruit_form.core;
+package edu.aku.hassannaqvi.cbt_kap_form.core;
 
 /**
  * Created by hassan.naqvi on 11/30/2016.

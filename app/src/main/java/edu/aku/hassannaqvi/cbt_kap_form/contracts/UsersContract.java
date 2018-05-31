@@ -1,4 +1,4 @@
-package edu.aku.hassannaqvi.wfp_recruit_form.contracts;
+package edu.aku.hassannaqvi.cbt_kap_form.contracts;
 
 import android.database.Cursor;
 import android.provider.BaseColumns;

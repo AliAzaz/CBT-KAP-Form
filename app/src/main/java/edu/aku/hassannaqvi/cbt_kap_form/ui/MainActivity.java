@@ -1,4 +1,4 @@
-package edu.aku.hassannaqvi.wfp_recruit_form.ui;
+package edu.aku.hassannaqvi.cbt_kap_form.ui;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -42,13 +42,13 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import edu.aku.hassannaqvi.wfp_recruit_form.R;
-import edu.aku.hassannaqvi.wfp_recruit_form.contracts.FormsContract;
-import edu.aku.hassannaqvi.wfp_recruit_form.core.AndroidDatabaseManager;
-import edu.aku.hassannaqvi.wfp_recruit_form.core.DatabaseHelper;
-import edu.aku.hassannaqvi.wfp_recruit_form.core.MainApp;
-import edu.aku.hassannaqvi.wfp_recruit_form.databinding.ActivityMainBinding;
-import edu.aku.hassannaqvi.wfp_recruit_form.sync.SyncAllData;
+import edu.aku.hassannaqvi.cbt_kap_form.R;
+import edu.aku.hassannaqvi.cbt_kap_form.contracts.FormsContract;
+import edu.aku.hassannaqvi.cbt_kap_form.core.AndroidDatabaseManager;
+import edu.aku.hassannaqvi.cbt_kap_form.core.DatabaseHelper;
+import edu.aku.hassannaqvi.cbt_kap_form.core.MainApp;
+import edu.aku.hassannaqvi.cbt_kap_form.databinding.ActivityMainBinding;
+import edu.aku.hassannaqvi.cbt_kap_form.sync.SyncAllData;
 
 public class MainActivity extends Activity {
 

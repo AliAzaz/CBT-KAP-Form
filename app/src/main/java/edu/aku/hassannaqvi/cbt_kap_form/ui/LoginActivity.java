@@ -1,4 +1,4 @@
-package edu.aku.hassannaqvi.wfp_recruit_form.ui;
+package edu.aku.hassannaqvi.cbt_kap_form.ui;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -59,10 +59,10 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import edu.aku.hassannaqvi.wfp_recruit_form.R;
-import edu.aku.hassannaqvi.wfp_recruit_form.core.DatabaseHelper;
-import edu.aku.hassannaqvi.wfp_recruit_form.core.MainApp;
-import edu.aku.hassannaqvi.wfp_recruit_form.get.GetAllData;
+import edu.aku.hassannaqvi.cbt_kap_form.R;
+import edu.aku.hassannaqvi.cbt_kap_form.core.DatabaseHelper;
+import edu.aku.hassannaqvi.cbt_kap_form.core.MainApp;
+import edu.aku.hassannaqvi.cbt_kap_form.get.GetAllData;
 
 
 /**
@@ -462,15 +462,15 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
     }
 
-    @OnClick(edu.aku.hassannaqvi.wfp_recruit_form.R.id.showPassword)
+    @OnClick(edu.aku.hassannaqvi.cbt_kap_form.R.id.showPassword)
     void onShowPasswordClick() {
         //TODO implement
         if (mPasswordView.getTransformationMethod() == null) {
             mPasswordView.setTransformationMethod(new PasswordTransformationMethod());
-            mPasswordView.setCompoundDrawablesWithIntrinsicBounds(edu.aku.hassannaqvi.wfp_recruit_form.R.drawable.ic_lock_black_24dp, 0, 0, 0);
+            mPasswordView.setCompoundDrawablesWithIntrinsicBounds(edu.aku.hassannaqvi.cbt_kap_form.R.drawable.ic_lock_black_24dp, 0, 0, 0);
         } else {
             mPasswordView.setTransformationMethod(null);
-            mPasswordView.setCompoundDrawablesWithIntrinsicBounds(edu.aku.hassannaqvi.wfp_recruit_form.R.drawable.ic_lock_open_black_24dp, 0, 0, 0);
+            mPasswordView.setCompoundDrawablesWithIntrinsicBounds(edu.aku.hassannaqvi.cbt_kap_form.R.drawable.ic_lock_open_black_24dp, 0, 0, 0);
         }
     }
 
@@ -479,10 +479,10 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         //TODO implement
         if (mPasswordView2.getTransformationMethod() == null) {
             mPasswordView2.setTransformationMethod(new PasswordTransformationMethod());
-            mPasswordView2.setCompoundDrawablesWithIntrinsicBounds(edu.aku.hassannaqvi.wfp_recruit_form.R.drawable.ic_lock_black_24dp, 0, 0, 0);
+            mPasswordView2.setCompoundDrawablesWithIntrinsicBounds(edu.aku.hassannaqvi.cbt_kap_form.R.drawable.ic_lock_black_24dp, 0, 0, 0);
         } else {
             mPasswordView2.setTransformationMethod(null);
-            mPasswordView2.setCompoundDrawablesWithIntrinsicBounds(edu.aku.hassannaqvi.wfp_recruit_form.R.drawable.ic_lock_open_black_24dp, 0, 0, 0);
+            mPasswordView2.setCompoundDrawablesWithIntrinsicBounds(edu.aku.hassannaqvi.cbt_kap_form.R.drawable.ic_lock_open_black_24dp, 0, 0, 0);
         }
     }
 
