@@ -57,7 +57,15 @@ public class SectionFGHActivity extends AppCompatActivity {
 
 
 
-        if (!validatorClass.EmptyRadioButton(this, bi.wrd03, bi.wrd03a, getString(R.string.wrd03))) {
+        if (!validatorClass.EmptyCheckBox(this, bi.ckf01, bi.ckf0188, bi.ckf0188x, getString(R.string.ckf01))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyCheckBox(this, bi.ckg01, bi.ckg0188, bi.ckg0188x, getString(R.string.ckg01))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyCheckBox(this, bi.ckh01, bi.ckh0188, bi.ckh0188x, getString(R.string.ckh01))) {
             return false;
         }
 

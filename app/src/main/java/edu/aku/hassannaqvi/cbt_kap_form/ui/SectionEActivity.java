@@ -21,7 +21,7 @@ public class SectionEActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bi = DataBindingUtil.setContentView(this,R.layout.activity_section_e);
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_e);
         bi.setCallback(this);
     }
 
@@ -55,8 +55,30 @@ public class SectionEActivity extends AppCompatActivity {
     private boolean formValidation() {
 
 
+        if (!validatorClass.EmptyCheckBox(this, bi.cke01, bi.cke0188, bi.cke0188x, getString(R.string.cke01))) {
+            return false;
+        }
+        if (!validatorClass.EmptyCheckBox(this, bi.cke02, bi.cke0288, bi.cke0288x, getString(R.string.cke02))) {
+            return false;
+        }
 
-        if (!validatorClass.EmptyRadioButton(this, bi.wrd03, bi.wrd03a, getString(R.string.wrd03))) {
+        if (!validatorClass.EmptyRadioButton(this, bi.cke03, bi.cke0388, bi.cke0388x, getString(R.string.cke03))) {
+            return false;
+        }
+        if (!validatorClass.EmptyRadioButton(this, bi.cke04, bi.cke0488, bi.cke0488x, getString(R.string.cke04))) {
+            return false;
+        }
+        if (!validatorClass.EmptyCheckBox(this, bi.cke05, bi.cke0588, bi.cke0588x, getString(R.string.cke05))) {
+            return false;
+        }
+        if (!validatorClass.EmptyCheckBox(this, bi.cke06, bi.cke0688, bi.cke0688x, getString(R.string.cke06))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, bi.cke07, bi.cke0788, bi.cke0788x, getString(R.string.cke07))) {
+            return false;
+        }
+        if (!validatorClass.EmptyRadioButton(this, bi.cke08, bi.cke0888, bi.cke0888x, getString(R.string.cke08))) {
             return false;
         }
         return true;
@@ -88,6 +110,7 @@ public class SectionEActivity extends AppCompatActivity {
         MainApp.fc.setsD(String.valueOf(sD));
 
     }
+
     private boolean UpdateDB() {
 
         //Long rowId;

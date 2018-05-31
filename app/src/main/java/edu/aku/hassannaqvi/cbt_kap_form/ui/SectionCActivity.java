@@ -73,7 +73,13 @@ ActivitySectionCBinding bi;
         if (!validatorClass.EmptyRadioButton(this, bi.ckc06, bi.ckc06c,bi.ckc06cx, getString(R.string.ckc06))) {
             return false;
         }
-        if (!validatorClass.EmptyRadioButton(this, bi.ckc07, bi.ckc0788,bi.ckc0788x, getString(R.string.ckc07))) {
+        if (!validatorClass.EmptyCheckBox(this, bi.ckc07, bi.ckc0788,bi.ckc0788x, getString(R.string.ckc07))) {
+            return false;
+        }
+        if (!validatorClass.EmptyRadioButton(this, bi.ckc08, bi.ckc08c,bi.ckc08cx, getString(R.string.ckc08))) {
+            return false;
+        }
+        if (!validatorClass.EmptyCheckBox(this, bi.ckd01, bi.ckd0188,bi.ckd0188x, getString(R.string.ckd01))) {
             return false;
         }
 
@@ -83,7 +89,7 @@ ActivitySectionCBinding bi;
     private void SaveDraft() throws JSONException {
 
         JSONObject sD = new JSONObject();
-        sD.put("wrd03", bi.wrd03a.isChecked() ? "1"
+        sD.put("ckc01", bi.wrd03a.isChecked() ? "1"
                 : bi.wrd03b.isChecked() ? "2"
                 : bi.wrd0399.isChecked() ? "99"
                 : "0");
