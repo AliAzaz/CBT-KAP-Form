@@ -23,7 +23,7 @@ public class SectionFGHActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         bi = DataBindingUtil.setContentView(this,R.layout.activity_section_fgh);
         bi.setCallback(this);
-
+        this.setTitle("Section F,G and H");
 
     }
 

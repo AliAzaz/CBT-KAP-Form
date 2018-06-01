@@ -23,6 +23,8 @@ public class SectionEActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_e);
         bi.setCallback(this);
+        this.setTitle("Section E");
+
     }
 
 
@@ -75,10 +77,10 @@ public class SectionEActivity extends AppCompatActivity {
             return false;
         }
 
-        if (!validatorClass.EmptyRadioButton(this, bi.cke07, bi.cke0788, bi.cke0788x, getString(R.string.cke07))) {
+        if (!validatorClass.EmptyRadioButton(this, bi.cke07, bi.cke07c, bi.cke07cx, getString(R.string.cke07))) {
             return false;
         }
-        if (!validatorClass.EmptyRadioButton(this, bi.cke08, bi.cke0888, bi.cke0888x, getString(R.string.cke08))) {
+        if (!validatorClass.EmptyRadioButton(this, bi.cke08, bi.cke08c, bi.cke08cx, getString(R.string.cke08))) {
             return false;
         }
         return true;
@@ -136,8 +138,8 @@ public class SectionEActivity extends AppCompatActivity {
                 : bi.cke07b.isChecked() ? "2"
                 : bi.cke07c.isChecked() ? "3"
                 : "0");
-
         sE.put("cke07cx", bi.cke07cx.getText().toString());
+
         sE.put("cke08", bi.cke08a.isChecked() ? "1"
                 : bi.cke08b.isChecked() ? "2"
                 : bi.cke08c.isChecked() ? "3"

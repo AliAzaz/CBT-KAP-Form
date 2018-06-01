@@ -96,11 +96,11 @@ public class MainApp extends Application {
 
             String date = DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(GPSPref.getString("Time", "0"))).toString();
 
-            MainApp.fc.setGpsLat(GPSPref.getString("Latitude", "0"));
-            MainApp.fc.setGpsLng(GPSPref.getString("Longitude", "0"));
-            MainApp.fc.setGpsAcc(GPSPref.getString("Accuracy", "0"));
+            MainApp.fc.setgpsLat(GPSPref.getString("Latitude", "0"));
+            MainApp.fc.setgpsLng(GPSPref.getString("Longitude", "0"));
+            MainApp.fc.setgpsAcc(GPSPref.getString("Accuracy", "0"));
 //            AppMain.fc.setGpsTime(GPSPref.getString(date, "0")); // Timestamp is converted to date above
-            MainApp.fc.setGpsDT(date); // Timestamp is converted to date above
+            MainApp.fc.setgpsDT(date); // Timestamp is converted to date above
 
             Toast.makeText(activity, "GPS set", Toast.LENGTH_SHORT).show();
 

@@ -39,9 +39,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String SQL_CREATE_FORMS = "CREATE TABLE "
             + FormsTable.TABLE_NAME + "("
             + FormsTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-            FormsTable.COLUMN_PROJECTNAME + " TEXT,"+
-            FormsTable.COLUMN__ID  + " TEXT,"+
             FormsTable.COLUMN__UID  + " TEXT,"+
+            FormsTable.COLUMN_PROJECTNAME + " TEXT,"+
             FormsTable.COLUMN_FORMDATE + " TEXT,"+
             FormsTable.COLUMN_USER + " TEXT,"+
             FormsTable.COLUMN_CHILD_ID + " TEXT,"+
@@ -445,6 +444,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 // New value for one column
         ContentValues values = new ContentValues();
         values.put(FormsTable.COLUMN_SA, MainApp.fc.getsA());
+
+// Which row to update, based on the ID
+        String selection = FormsTable._ID + " = ?";
+        String[] selectionArgs = {String.valueOf(MainApp.fc.get_ID())};
+
+        int count = db.update(FormsTable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+        return count;
+    }
+
+    public int updatesB() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(FormsTable.COLUMN_SB, MainApp.fc.getsB());
 
 // Which row to update, based on the ID
         String selection = FormsTable._ID + " = ?";

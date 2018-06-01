@@ -23,6 +23,8 @@ ActivitySectionCBinding bi;
         super.onCreate(savedInstanceState);
         bi = DataBindingUtil.setContentView(this,R.layout.activity_section_c);
         bi.setCallback(this);
+        this.setTitle("Section C and D");
+
 
     }
 
