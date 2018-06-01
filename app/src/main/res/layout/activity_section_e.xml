@@ -37,7 +37,13 @@ tools:context=".ui.SectionEActivity">
             android:animateLayoutChanges="true"
             android:layoutDirection="rtl"
             android:orientation="vertical">
-
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@color/pink_100"
+                android:text="@string/ckesub1"
+                android:textColor="@color/colorPrimaryDark" />
             <!--cke01-->
 
             <TextView
@@ -387,6 +393,14 @@ tools:context=".ui.SectionEActivity">
                     android:text='@{cke0688.checked ? cke0688x.getText.toString : ""}'
                     android:visibility='@{cke0688.checked ? View.VISIBLE : View.GONE}' />
             </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@color/pink_100"
+                android:text="@string/ckesub2"
+                android:textColor="@color/colorPrimaryDark" />
             <!--cke07-->
 
             <TextView
@@ -430,7 +444,7 @@ tools:context=".ui.SectionEActivity">
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                android:hint="@string/other"
+                android:hint="@string/cke07c"
                 android:inputType="textCapWords"
                 android:text='@{cke07c.checked ? cke07cx.getText.toString : ""}'
                 android:visibility='@{cke07c.checked ? View.VISIBLE : View.GONE}' />
@@ -479,7 +493,7 @@ tools:context=".ui.SectionEActivity">
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                android:hint="@string/other"
+                android:hint="@string/cke08c"
                 android:inputType="textCapWords"
                 android:text='@{cke08c.checked ? cke08cx.getText.toString : ""}'
                 android:visibility='@{cke08c.checked ? View.VISIBLE : View.GONE}' />

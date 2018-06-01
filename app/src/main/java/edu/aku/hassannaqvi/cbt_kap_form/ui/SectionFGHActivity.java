@@ -110,7 +110,7 @@ public class SectionFGHActivity extends AppCompatActivity {
 
                 finish();
 
-                startActivity(new Intent(this, MainActivity.class));
+                startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();

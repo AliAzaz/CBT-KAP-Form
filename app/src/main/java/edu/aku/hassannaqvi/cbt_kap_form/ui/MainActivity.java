@@ -48,6 +48,7 @@ import edu.aku.hassannaqvi.cbt_kap_form.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.cbt_kap_form.core.DatabaseHelper;
 import edu.aku.hassannaqvi.cbt_kap_form.core.MainApp;
 import edu.aku.hassannaqvi.cbt_kap_form.databinding.ActivityMainBinding;
+import edu.aku.hassannaqvi.cbt_kap_form.get.GetAllData;
 import edu.aku.hassannaqvi.cbt_kap_form.sync.SyncAllData;
 
 public class MainActivity extends Activity {
@@ -416,6 +417,8 @@ public class MainActivity extends Activity {
 
             // Sync Random
             /*new GetBLRandom(this).execute();*/
+            Toast.makeText(MainActivity.this, "Sync Users", Toast.LENGTH_LONG).show();
+            new GetAllData(this, "User").execute() ;
 
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = syncPref.edit();

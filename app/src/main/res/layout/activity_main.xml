@@ -109,7 +109,7 @@
                 android:layout_marginTop="16dp"
                 android:onClick="@{() -> callback.openForm()}"
                 android:text="OPEN FORM" />
-
+<!--
 
             <Button
                 android:id="@+id/openA"
@@ -218,7 +218,7 @@
                 android:onClick="openLMO"
                 android:text="OPEN LMO" />
 
-
+-->
             <Button
                 android:id="@+id/syncServer"
                 android:layout_width="match_parent"

@@ -142,6 +142,7 @@
     <string name="ckd01c"> زیادہ فولاد والی غذائیں کھائیں </string>
     <string name="ckd01d"> کھاناتیار کرتے وقت آئیو ڈین ملا نمک استعمال کریں </string>
     <string name="ckeheading"> غذائی کمی </string>
+    <string name="ckesub1">  علم</string>
     <string name="cke01"> غذائی کمی کی علامات کیا ہیں؟ یا ہم کیسے شناخت کریں گے کہ کسی کو مناسب خوراک نہیں مل رہی؟ ایک سے زیادہ جوابات کی صورت میں ہر بتائے گئے جواب پر نشان لگائیں </string>
     <string name="cke01a"> طاقت میں کمی/کمزوری، نارمل طریقے سے پڑھائی، کھیل اور کام نہ کر سکنا(معذوری) </string>
     <string name="cke01b"> قوت مدافعت کے نظام میں کمزوری(جلدی بیمار ہو جانا، سنگین حد تک بیمار ہو جانا) </string>
@@ -164,7 +165,7 @@
     <string name="cke06b"> باقائدگی سے خوراک دینا/بار بار خوراک دیں </string>
     <string name="cke06c"> خوراک دیتے وقت توجہ دینا </string>
     <string name="cke06d"> مرکز صحت پر جانا / ہسپتال میں بچے کی نشوونما چیک کروانا۔ </string>
-    <string name="cke07sub"> رویے </string>
+    <string name="ckesub2"> رویے </string>
     <string name="cke07"> کیا آپ سوچتے ہیں کہ آپ کا بچہ غذائی قلت میں ہے اور نشوونما پانا روک رہا ہے اور اپنا وزن کم کر رہا ہے؟ </string>
     <string name="cke07a"> عموما ایسا ہے </string>
     <string name="cke07b"> آپ کو یقین نہیں ہے </string>

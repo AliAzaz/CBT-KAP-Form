@@ -52,30 +52,27 @@ tools:context=".ui.SectionCActivity">
                 android:id="@+id/ckc01"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <RadioButton
                     android:id="@+id/ckc01a"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
                     android:text="@string/ckc01a" />
 
                 <RadioButton
                     android:id="@+id/ckc01b"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
                     android:text="@string/ckc01b" />
 
                 <RadioButton
                     android:id="@+id/ckc01c"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
                     android:text="@string/ckc01c" />
 
             </RadioGroup>
@@ -85,7 +82,7 @@ tools:context=".ui.SectionCActivity">
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                android:hint="@string/other"
+                android:hint="@string/ckc01c"
                 android:inputType="textCapWords"
                 android:text='@{ckc01c.checked ? ckc01cx.getText.toString : ""}'
                 android:visibility='@{ckc01c.checked ? View.VISIBLE : View.GONE}' />
@@ -104,30 +101,27 @@ tools:context=".ui.SectionCActivity">
                 android:id="@+id/ckc02"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <RadioButton
                     android:id="@+id/ckc02a"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
                     android:text="@string/ckc02a" />
 
                 <RadioButton
                     android:id="@+id/ckc02b"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
                     android:text="@string/ckc02b" />
 
                 <RadioButton
                     android:id="@+id/ckc02c"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
                     android:text="@string/ckc02c" />
             </RadioGroup>
 
@@ -137,7 +131,7 @@ tools:context=".ui.SectionCActivity">
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                    android:hint="@string/other"
+                    android:hint="@string/ckc02c"
                     android:inputType="textCapWords"
                     android:text='@{ckc02c.checked ? ckc02cx.getText.toString : ""}'
                     android:visibility='@{ckc02c.checked ? View.VISIBLE : View.GONE}' />
@@ -157,30 +151,27 @@ tools:context=".ui.SectionCActivity">
                 android:id="@+id/ckc03"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <RadioButton
                     android:id="@+id/ckc03a"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
                     android:text="@string/ckc03a" />
 
                 <RadioButton
                     android:id="@+id/ckc03b"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
                     android:text="@string/ckc03b" />
 
                 <RadioButton
                     android:id="@+id/ckc03c"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
                     android:text="@string/ckc03c" />
             </RadioGroup>
 
@@ -190,7 +181,7 @@ tools:context=".ui.SectionCActivity">
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                    android:hint="@string/other"
+                    android:hint="@string/ckc03c"
                     android:inputType="textCapWords"
                     android:text='@{ckc03c.checked ? ckc03cx.getText.toString : ""}'
                     android:visibility='@{ckc03c.checked ? View.VISIBLE : View.GONE}' />
@@ -209,30 +200,27 @@ tools:context=".ui.SectionCActivity">
                 android:id="@+id/ckc04"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <RadioButton
                     android:id="@+id/ckc04a"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
                     android:text="@string/ckc04a" />
 
                 <RadioButton
                     android:id="@+id/ckc04b"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
                     android:text="@string/ckc04b" />
 
                 <RadioButton
                     android:id="@+id/ckc04c"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
                     android:text="@string/ckc04c" />
 
             </RadioGroup>
@@ -242,7 +230,7 @@ tools:context=".ui.SectionCActivity">
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                android:hint="@string/other"
+                android:hint="@string/ckc04c"
                 android:inputType="textCapWords"
                 android:text='@{ckc04c.checked ? ckc04cx.getText.toString : ""}'
                 android:visibility='@{ckc04c.checked ? View.VISIBLE : View.GONE}' />
@@ -262,30 +250,27 @@ tools:context=".ui.SectionCActivity">
                 android:id="@+id/ckc05"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <RadioButton
                     android:id="@+id/ckc05a"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
                     android:text="@string/ckc05a" />
 
                 <RadioButton
                     android:id="@+id/ckc05b"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
                     android:text="@string/ckc05b" />
 
                 <RadioButton
                     android:id="@+id/ckc05c"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
                     android:text="@string/ckc05c" />
 
             </RadioGroup>
@@ -295,7 +280,7 @@ tools:context=".ui.SectionCActivity">
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                android:hint="@string/other"
+                android:hint="@string/ckc05c"
                 android:inputType="textCapWords"
                 android:text='@{ckc05c.checked ? ckc05cx.getText.toString : ""}'
                 android:visibility='@{ckc05c.checked ? View.VISIBLE : View.GONE}' />
@@ -314,30 +299,27 @@ tools:context=".ui.SectionCActivity">
                 android:id="@+id/ckc06"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <RadioButton
                     android:id="@+id/ckc06a"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
                     android:text="@string/ckc06a" />
 
                 <RadioButton
                     android:id="@+id/ckc06b"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
                     android:text="@string/ckc06b" />
 
                 <RadioButton
                     android:id="@+id/ckc06c"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
                     android:text="@string/ckc06c" />
 
             </RadioGroup>
@@ -347,7 +329,7 @@ tools:context=".ui.SectionCActivity">
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                android:hint="@string/other"
+                android:hint="@string/ckc06c"
                 android:inputType="textCapWords"
                 android:text='@{ckc06c.checked ? ckc06cx.getText.toString : ""}'
                 android:visibility='@{ckc06c.checked ? View.VISIBLE : View.GONE}' />
@@ -432,30 +414,27 @@ tools:context=".ui.SectionCActivity">
                 android:id="@+id/ckc08"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <RadioButton
                     android:id="@+id/ckc08a"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
                     android:text="@string/ckc08a" />
 
                 <RadioButton
                     android:id="@+id/ckc08b"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
                     android:text="@string/ckc08b" />
 
                 <RadioButton
                     android:id="@+id/ckc08c"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
                     android:text="@string/ckc08c" />
 
             </RadioGroup>
@@ -465,7 +444,7 @@ tools:context=".ui.SectionCActivity">
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                android:hint="@string/other"
+                android:hint="@string/ckc08c"
                 android:inputType="textCapWords"
                 android:text='@{ckc08c.checked ? ckc08cx.getText.toString : ""}'
                 android:visibility='@{ckc08c.checked ? View.VISIBLE : View.GONE}' />
