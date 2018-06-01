@@ -4,16 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layoutDirection="rtl"
     tools:context="edu.aku.hassannaqvi.cbt_kap_form.ui.SectionBActivity">
-
     <data>
-
         <import type="android.view.View" />
 
         <variable
             name="callback"
             type="edu.aku.hassannaqvi.cbt_kap_form.ui.SectionBActivity" />
     </data>
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="2dp"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center"
+        android:text="@string/ckbheading"
+        android:textSize="40sp" />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -24,15 +34,7 @@
             android:animateLayoutChanges="true"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="2dp"
-                android:background="@color/colorPrimaryDark"
-                android:gravity="center"
-                android:text="@string/ckbheading"
-                android:textSize="40sp" />
+
 
             <!--ckb01-->
             <TextView
@@ -1072,7 +1074,7 @@
 
             </LinearLayout>
 
-
         </LinearLayout>
     </ScrollView>
+</LinearLayout>
 </layout>

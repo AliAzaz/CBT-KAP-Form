@@ -88,26 +88,66 @@ ActivitySectionCBinding bi;
 
     private void SaveDraft() throws JSONException {
 
-        JSONObject sD = new JSONObject();
-        sD.put("ckc01", bi.wrd03a.isChecked() ? "1"
-                : bi.wrd03b.isChecked() ? "2"
-                : bi.wrd0399.isChecked() ? "99"
+        JSONObject sC = new JSONObject();
+        sC.put("ckc01", bi.ckc01a.isChecked() ? "1"
+                : bi.ckc01b.isChecked() ? "2"
+                : bi.ckc01c.isChecked() ? "3"
                 : "0");
+        sC.put("ckc01cx", bi.ckc01cx.getText().toString());
+        
+        sC.put("ckc02", bi.ckc02a.isChecked() ? "1"
+                : bi.ckc02b.isChecked() ? "2"
+                : bi.ckc02c.isChecked() ? "3"
+                : "0");
+        sC.put("ckc02cx", bi.ckc02cx.getText().toString());
+        
+        sC.put("ckc03", bi.ckc03a.isChecked() ? "1"
+                : bi.ckc03b.isChecked() ? "2"
+                : bi.ckc03c.isChecked() ? "3"
+                : "0");
+        sC.put("ckc03cx", bi.ckc03cx.getText().toString());
+        sC.put("ckc04", bi.ckc04a.isChecked() ? "1"
+                : bi.ckc04b.isChecked() ? "2"
+                : bi.ckc04c.isChecked() ? "3"
+                : "0");
+        sC.put("ckc04cx", bi.ckc04cx.getText().toString());
+        sC.put("ckc05", bi.ckc05a.isChecked() ? "1"
+                : bi.ckc05b.isChecked() ? "2"
+                : bi.ckc05c.isChecked() ? "3"
+                : "0");
+        sC.put("ckc05cx", bi.ckc05cx.getText().toString());
 
-        sD.put("wrd04a", bi.wrd04a.isChecked() ? "1" : "0");
-        sD.put("wrd04b", bi.wrd04b.isChecked() ? "2" : "0");
-        sD.put("wrd04c", bi.wrd04c.isChecked() ? "3" : "0");
-        sD.put("wrd04d", bi.wrd04d.isChecked() ? "4" : "0");
-        sD.put("wrd04e", bi.wrd04e.isChecked() ? "5" : "0");
-        sD.put("wrd04f", bi.wrd04f.isChecked() ? "6" : "0");
-        sD.put("wrd04g", bi.wrd04g.isChecked() ? "7" : "0");
-        sD.put("wrd04h", bi.wrd04h.isChecked() ? "8" : "0");
-        sD.put("wrd04g", bi.wrd0488.isChecked() ? "88" : "0");
-
-        sD.put("wrd0488x", bi.wrd0488x.getText().toString());
+        sC.put("ckc06", bi.ckc06a.isChecked() ? "1"
+                : bi.ckc06b.isChecked() ? "2"
+                : bi.ckc06c.isChecked() ? "3"
+                : "0");
+        sC.put("ckc06cx", bi.ckc06cx.getText().toString());
 
 
-        MainApp.fc.setsD(String.valueOf(sD));
+        sC.put("ckc07a", bi.ckc07a.isChecked() ? "1" : "0");
+        sC.put("ckc07b", bi.ckc07b.isChecked() ? "2" : "0");
+        sC.put("ckc07c", bi.ckc07c.isChecked() ? "3" : "0");
+        sC.put("ckc07d", bi.ckc07d.isChecked() ? "4" : "0");
+        sC.put("ckc0799", bi.ckc0799.isChecked() ? "99" : "0");
+        sC.put("ckc0788", bi.ckc0788.isChecked() ? "88" : "0");
+        sC.put("ckc0788x", bi.ckc0788x.getText().toString());
+
+        sC.put("ckc08", bi.ckc08a.isChecked() ? "1"
+                : bi.ckc08b.isChecked() ? "2"
+                : bi.ckc08c.isChecked() ? "3"
+                : "0");
+        sC.put("ckc08cx", bi.ckc08cx.getText().toString());
+
+
+        sC.put("ckd01a", bi.ckd01a.isChecked() ? "1" : "0");
+        sC.put("ckd01b", bi.ckd01b.isChecked() ? "2" : "0");
+        sC.put("ckd01c", bi.ckd01c.isChecked() ? "3" : "0");
+        sC.put("ckd01d", bi.ckd01d.isChecked() ? "4" : "0");
+        sC.put("ckd0199", bi.ckd0199.isChecked() ? "99" : "0");
+        sC.put("ckd0188", bi.ckd0188.isChecked() ? "88" : "0");
+        sC.put("ckd0188x", bi.ckd0188x.getText().toString());
+
+        MainApp.fc.setsCD(String.valueOf(sC));
 
     }
     private boolean UpdateDB() {
@@ -115,7 +155,7 @@ ActivitySectionCBinding bi;
         //Long rowId;
         DatabaseHelper db = new DatabaseHelper(this);
 
-        int updcount = db.updateSD();
+       int updcount = db.updatesCD();
 
         if (updcount == 1) {
             //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();

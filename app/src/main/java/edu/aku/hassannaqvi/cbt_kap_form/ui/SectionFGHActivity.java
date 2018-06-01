@@ -9,12 +9,14 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import edu.aku.hassannaqvi.cbt_kap_form.R;
 import edu.aku.hassannaqvi.cbt_kap_form.core.DatabaseHelper;
 import edu.aku.hassannaqvi.cbt_kap_form.core.MainApp;
 import edu.aku.hassannaqvi.cbt_kap_form.validation.validatorClass;
+import edu.aku.hassannaqvi.cbt_kap_form.databinding.ActivitySectionFghBinding;
 
 public class SectionFGHActivity extends AppCompatActivity {
-    ActivitySectionFGHBinding bi;
+    ActivitySectionFghBinding bi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,29 +76,31 @@ public class SectionFGHActivity extends AppCompatActivity {
 
     private void SaveDraft() throws JSONException {
 
-        JSONObject sD = new JSONObject();
+        JSONObject sFGH = new JSONObject();
+        sFGH.put("ckf01a", bi.ckf01a.isChecked() ? "1" : "0");
+        sFGH.put("ckf01b", bi.ckf01b.isChecked() ? "2" : "0");
+        sFGH.put("ckf0199", bi.ckf0199.isChecked() ? "99" : "0");
+        sFGH.put("ckf0188", bi.ckf0188.isChecked() ? "88" : "0");
+        sFGH.put("ckf0188x", bi.ckf0188x.getText().toString());
 
 
-        sD.put("wrd03", bi.wrd03a.isChecked() ? "1"
-                : bi.wrd03b.isChecked() ? "2"
-                : bi.wrd0399.isChecked() ? "99"
-                : "0");
+        sFGH.put("ckg01a", bi.ckg01a.isChecked() ? "1" : "0");
+        sFGH.put("ckg01b", bi.ckg01b.isChecked() ? "2" : "0");
+        sFGH.put("ckg0199", bi.ckg0199.isChecked() ? "99" : "0");
+        sFGH.put("ckg0188", bi.ckg0188.isChecked() ? "88" : "0");
+        sFGH.put("ckg0188x", bi.ckg0188x.getText().toString());
+
+        sFGH.put("ckh01a", bi.ckh01a.isChecked() ? "1" : "0");
+        sFGH.put("ckh01b", bi.ckh01b.isChecked() ? "2" : "0");
+        sFGH.put("ckh01c", bi.ckh01c.isChecked() ? "3" : "0");
+        sFGH.put("ckh01d", bi.ckh01d.isChecked() ? "4" : "0");
+        sFGH.put("ckh01e", bi.ckh01e.isChecked() ? "5" : "0");
+        sFGH.put("ckh0199", bi.ckh0199.isChecked() ? "99" : "0");
+        sFGH.put("ckh0188", bi.ckh0188.isChecked() ? "88" : "0");
+        sFGH.put("ckh0188x", bi.ckh0188x.getText().toString());
 
 
-        sD.put("wrd04a", bi.wrd04a.isChecked() ? "1" : "0");
-        sD.put("wrd04b", bi.wrd04b.isChecked() ? "2" : "0");
-        sD.put("wrd04c", bi.wrd04c.isChecked() ? "3" : "0");
-        sD.put("wrd04d", bi.wrd04d.isChecked() ? "4" : "0");
-        sD.put("wrd04e", bi.wrd04e.isChecked() ? "5" : "0");
-        sD.put("wrd04f", bi.wrd04f.isChecked() ? "6" : "0");
-        sD.put("wrd04g", bi.wrd04g.isChecked() ? "7" : "0");
-        sD.put("wrd04h", bi.wrd04h.isChecked() ? "8" : "0");
-        sD.put("wrd04g", bi.wrd0488.isChecked() ? "88" : "0");
-
-        sD.put("wrd0488x", bi.wrd0488x.getText().toString());
-
-
-        MainApp.fc.setsD(String.valueOf(sD));
+        MainApp.fc.setsFGH(String.valueOf(sFGH));
 
     }
     private boolean UpdateDB() {
@@ -104,7 +108,7 @@ public class SectionFGHActivity extends AppCompatActivity {
         //Long rowId;
         DatabaseHelper db = new DatabaseHelper(this);
 
-        int updcount = db.updateSD();
+        int updcount = db.updateSFGH();
 
         if (updcount == 1) {
             //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();

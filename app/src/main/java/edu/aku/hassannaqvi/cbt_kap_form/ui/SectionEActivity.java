@@ -12,7 +12,7 @@ import org.json.JSONObject;
 import edu.aku.hassannaqvi.cbt_kap_form.R;
 import edu.aku.hassannaqvi.cbt_kap_form.core.DatabaseHelper;
 import edu.aku.hassannaqvi.cbt_kap_form.core.MainApp;
-import edu.aku.hassannaqvi.cbt_kap_form.databinding.ActivitySectionCBinding;
+import edu.aku.hassannaqvi.cbt_kap_form.databinding.ActivitySectionEBinding;
 import edu.aku.hassannaqvi.cbt_kap_form.validation.validatorClass;
 
 public class SectionEActivity extends AppCompatActivity {
@@ -86,28 +86,66 @@ public class SectionEActivity extends AppCompatActivity {
 
     private void SaveDraft() throws JSONException {
 
-        JSONObject sD = new JSONObject();
+        JSONObject sE = new JSONObject();
+        sE.put("cke01a", bi.cke01a.isChecked() ? "1" : "0");
+        sE.put("cke01b", bi.cke01b.isChecked() ? "2" : "0");
+        sE.put("cke01c", bi.cke01c.isChecked() ? "3" : "0");
+        sE.put("cke01d", bi.cke01d.isChecked() ? "4" : "0");
+        sE.put("cke0199", bi.cke0199.isChecked() ? "99" : "0");
+        sE.put("cke0188", bi.cke0188.isChecked() ? "88" : "0");
+        sE.put("cke0188x", bi.cke0188x.getText().toString());
 
-        sD.put("wrd03", bi.wrd03a.isChecked() ? "1"
-                : bi.wrd03b.isChecked() ? "2"
-                : bi.wrd0399.isChecked() ? "99"
+        sE.put("cke02a", bi.cke02a.isChecked() ? "1" : "0");
+        sE.put("cke02b", bi.cke02b.isChecked() ? "2" : "0");
+        sE.put("cke02c", bi.cke02c.isChecked() ? "3" : "0");
+        sE.put("cke0299", bi.cke0299.isChecked() ? "99" : "0");
+        sE.put("cke0288", bi.cke0288.isChecked() ? "88" : "0");
+        sE.put("cke0288x", bi.cke0288x.getText().toString());
+
+
+        sE.put("cke03", bi.cke03a.isChecked() ? "1"
+                : bi.cke03b.isChecked() ? "2"
+                : bi.cke0399.isChecked() ? "99"
+                : bi.cke0388.isChecked() ? "88"
                 : "0");
 
+        sE.put("cke0388x", bi.cke0388x.getText().toString());
 
-        sD.put("wrd04a", bi.wrd04a.isChecked() ? "1" : "0");
-        sD.put("wrd04b", bi.wrd04b.isChecked() ? "2" : "0");
-        sD.put("wrd04c", bi.wrd04c.isChecked() ? "3" : "0");
-        sD.put("wrd04d", bi.wrd04d.isChecked() ? "4" : "0");
-        sD.put("wrd04e", bi.wrd04e.isChecked() ? "5" : "0");
-        sD.put("wrd04f", bi.wrd04f.isChecked() ? "6" : "0");
-        sD.put("wrd04g", bi.wrd04g.isChecked() ? "7" : "0");
-        sD.put("wrd04h", bi.wrd04h.isChecked() ? "8" : "0");
-        sD.put("wrd04g", bi.wrd0488.isChecked() ? "88" : "0");
+        sE.put("cke04", bi.cke04a.isChecked() ? "1"
+                : bi.cke0499.isChecked() ? "99"
+                : bi.cke0488.isChecked() ? "88"
+                : "0");
 
-        sD.put("wrd0488x", bi.wrd0488x.getText().toString());
+        sE.put("cke0488x", bi.cke0488x.getText().toString());
 
+        sE.put("cke05a", bi.cke05a.isChecked() ? "1" : "0");
+        sE.put("cke05b", bi.cke05b.isChecked() ? "2" : "0");
+        sE.put("cke0599", bi.cke0599.isChecked() ? "99" : "0");
+        sE.put("cke0588", bi.cke0588.isChecked() ? "88" : "0");
+        sE.put("cke0588x", bi.cke0588x.getText().toString());
 
-        MainApp.fc.setsD(String.valueOf(sD));
+        sE.put("cke06a", bi.cke06a.isChecked() ? "1" : "0");
+        sE.put("cke06b", bi.cke06b.isChecked() ? "2" : "0");
+        sE.put("cke06c", bi.cke06c.isChecked() ? "3" : "0");
+        sE.put("cke06d", bi.cke06d.isChecked() ? "4" : "0");
+        sE.put("cke0699", bi.cke0699.isChecked() ? "99" : "0");
+        sE.put("cke0688", bi.cke0688.isChecked() ? "88" : "0");
+        sE.put("cke0688x", bi.cke0688x.getText().toString());
+
+        sE.put("cke07", bi.cke07a.isChecked() ? "1"
+                : bi.cke07b.isChecked() ? "2"
+                : bi.cke07c.isChecked() ? "3"
+                : "0");
+
+        sE.put("cke07cx", bi.cke07cx.getText().toString());
+        sE.put("cke08", bi.cke08a.isChecked() ? "1"
+                : bi.cke08b.isChecked() ? "2"
+                : bi.cke08c.isChecked() ? "3"
+                : "0");
+
+        sE.put("cke08cx", bi.cke08cx.getText().toString());
+
+        MainApp.fc.setsE(String.valueOf(sE));
 
     }
 
@@ -116,7 +154,7 @@ public class SectionEActivity extends AppCompatActivity {
         //Long rowId;
         DatabaseHelper db = new DatabaseHelper(this);
 
-        int updcount = db.updateSD();
+        int updcount = db.updatesE();
 
         if (updcount == 1) {
             //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
