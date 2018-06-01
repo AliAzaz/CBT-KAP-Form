@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -25,9 +26,57 @@ ActivitySectionCBinding bi;
         bi.setCallback(this);
         this.setTitle("Section C and D");
 
-
+setUpActivity();
     }
 
+    private void setUpActivity() {
+        bi.ckc0799.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    bi.ckc07a.setChecked(false);
+                    bi.ckc07b.setChecked(false);
+                    bi.ckc07c.setChecked(false);
+                    bi.ckc07d.setChecked(false);
+                    bi.ckc0788.setChecked(false);
+                    bi.ckc07a.setEnabled(false);
+                    bi.ckc07b.setEnabled(false);
+                    bi.ckc07c.setEnabled(false);
+                    bi.ckc07d.setEnabled(false);
+                    bi.ckc0788.setEnabled(false);
+                }else {
+                    bi.ckc07a.setEnabled(true);
+                    bi.ckc07b.setEnabled(true);
+                    bi.ckc07c.setEnabled(true);
+                    bi.ckc07d.setEnabled(true);
+                    bi.ckc0788.setEnabled(true);
+                }
+            }
+        });
+        bi.ckd0199.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    bi.ckd01a.setChecked(false);
+                    bi.ckd01b.setChecked(false);
+                    bi.ckd01c.setChecked(false);
+                    bi.ckd01d.setChecked(false);
+                    bi.ckd0188.setChecked(false);
+                    bi.ckd01a.setEnabled(false);
+                    bi.ckd01b.setEnabled(false);
+                    bi.ckd01c.setEnabled(false);
+                    bi.ckd01d.setEnabled(false);
+                    bi.ckd0188.setEnabled(false);
+                }else {
+                    bi.ckd01a.setEnabled(true);
+                    bi.ckd01b.setEnabled(true);
+                    bi.ckd01c.setEnabled(true);
+                    bi.ckd01d.setEnabled(true);
+                    bi.ckd0188.setEnabled(true);
+                }
+            }
+        });
+    }
 
 
     public void BtnEnd() {

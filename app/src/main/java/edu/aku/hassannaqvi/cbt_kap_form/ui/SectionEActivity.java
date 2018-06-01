@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -24,7 +25,103 @@ public class SectionEActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_e);
         bi.setCallback(this);
         this.setTitle("Section E");
+        setUpActivity();
 
+    }
+
+    private void setUpActivity() {
+        bi.cke0199.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    bi.cke01a.setChecked(false);
+                    bi.cke01b.setChecked(false);
+                    bi.cke01c.setChecked(false);
+                    bi.cke01d.setChecked(false);
+                    bi.cke0188.setChecked(false);
+
+                    bi.cke01a.setEnabled(false);
+                    bi.cke01b.setEnabled(false);
+                    bi.cke01c.setEnabled(false);
+                    bi.cke01d.setEnabled(false);
+                    bi.cke0188.setEnabled(false);
+                }else {
+                    bi.cke01a.setEnabled(true);
+                    bi.cke01b.setEnabled(true);
+                    bi.cke01c.setEnabled(true);
+                    bi.cke01d.setEnabled(true);
+                    bi.cke0188.setEnabled(true);
+                }
+            }
+        });
+        bi.cke0299.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    bi.cke02a.setChecked(false);
+                    bi.cke02b.setChecked(false);
+                    bi.cke02c.setChecked(false);
+                    bi.cke0288.setChecked(false);
+
+
+                    bi.cke02a.setEnabled(false);
+                    bi.cke02b.setEnabled(false);
+                    bi.cke02c.setEnabled(false);
+                    bi.cke0288.setEnabled(false);
+
+                }else {
+                    bi.cke02a.setEnabled(true);
+                    bi.cke02b.setEnabled(true);
+                    bi.cke02c.setEnabled(true);
+                    bi.cke0288.setEnabled(true);
+                }
+            }
+        });
+        bi.cke0599.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    bi.cke05a.setChecked(false);
+                    bi.cke05b.setChecked(false);
+                    bi.cke0588.setChecked(false);
+
+                    bi.cke05a.setEnabled(false);
+                    bi.cke05b.setEnabled(false);
+                    bi.cke0588.setEnabled(false);
+
+
+                }else {
+                    bi.cke05a.setEnabled(true);
+                    bi.cke05b.setEnabled(true);
+                    bi.cke0588.setEnabled(true);
+                }
+            }
+        });
+        bi.cke0699.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    bi.cke06a.setChecked(false);
+                    bi.cke06b.setChecked(false);
+                    bi.cke06c.setChecked(false);
+                    bi.cke06d.setChecked(false);
+                    bi.cke0688.setChecked(false);
+
+
+                    bi.cke06a.setEnabled(false);
+                    bi.cke06b.setEnabled(false);
+                    bi.cke06c.setEnabled(false);
+                    bi.cke06d.setEnabled(false);
+                    bi.cke0688.setEnabled(false);
+                }else {
+                    bi.cke06a.setEnabled(true);
+                    bi.cke06b.setEnabled(true);
+                    bi.cke06c.setEnabled(true);
+                    bi.cke06d.setEnabled(true);
+                    bi.cke0688.setEnabled(true);
+                }
+            }
+        });
     }
 
 

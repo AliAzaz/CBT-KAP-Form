@@ -30,7 +30,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.inputmethod.EditorInfo;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -43,8 +43,6 @@ import com.github.amlcurran.showcaseview.ShowcaseView;
 import com.github.amlcurran.showcaseview.targets.Target;
 import com.github.amlcurran.showcaseview.targets.ViewTarget;
 
-import org.json.JSONArray;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -52,6 +50,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -63,6 +62,8 @@ import edu.aku.hassannaqvi.cbt_kap_form.R;
 import edu.aku.hassannaqvi.cbt_kap_form.core.DatabaseHelper;
 import edu.aku.hassannaqvi.cbt_kap_form.core.MainApp;
 import edu.aku.hassannaqvi.cbt_kap_form.get.GetAllData;
+
+import static java.lang.Thread.sleep;
 
 
 /**
@@ -77,10 +78,17 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     private static final String[] DUMMY_CREDENTIALS = new String[]{
             "test1234:test1234", "testS12345:testS12345", "bar@example.com:world"
     };
-    // District Spinner
-    public ArrayList<String> lables;
-    public ArrayList<String> values;
-    public Map<String, String> valuesnlabels;
+    // Spinners
+    ArrayAdapter<String> dataAdapter;
+
+    ArrayList<String> lablesTalukas;
+    //Collection<EnumBlockContract> TalukasList;
+    Map<String, String> talukasMap;
+
+    ArrayList<String> lablesUCs;
+    Map<String, String> ucsMap;
+
+
     // UI references.
     @BindView(R.id.login_progress)
     ProgressBar mProgressView;
@@ -90,33 +98,26 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     EditText mEmailView;
     @BindView(R.id.password)
     EditText mPasswordView;
-
-    @BindView(R.id.email2)
-    EditText mEmailView2;
-    @BindView(R.id.password2)
-    EditText mPasswordView2;
-
+    @BindView(R.id.txt_password)
+    TextView txt_password;
     @BindView(R.id.txtinstalldate)
     TextView txtinstalldate;
     @BindView(R.id.email_sign_in_button)
     Button mEmailSignInButton;
-    @BindView(R.id.spUC)
-    Spinner spUC;
+
 
     @BindView(R.id.syncData)
     Button syncData;
-
-    @BindView(R.id.testing)
-    TextView testing;
 
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
 
     String DirectoryName;
 
+    DatabaseHelper db;
+
     private UserLoginTask mAuthTask = null;
-    private StringBuffer jsonString_output;
-    private JSONArray json;
+    private int clicks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,67 +125,27 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
-        MainApp.loginMem = new String[3];
-        MainApp.loginMem[0] = "...";    //default value
-
         try {
             long installedOn = this
                     .getPackageManager()
-                    .getPackageInfo("edu.aku.hassannaqvi.wfp_recruit_form", 0)
+                    .getPackageInfo("edu.aku.hassannaqvi.cbt_kap_form", 0)
                     .lastUpdateTime;
-            Integer versionCode = this
+            MainApp.versionCode = this
                     .getPackageManager()
-                    .getPackageInfo("edu.aku.hassannaqvi.wfp_recruit_form", 0)
+                    .getPackageInfo("edu.aku.hassannaqvi.cbt_kap_form", 0)
                     .versionCode;
-            String versionName = this
+            MainApp.versionName = this
                     .getPackageManager()
-                    .getPackageInfo("edu.aku.hassannaqvi.wfp_recruit_form", 0)
+                    .getPackageInfo("edu.aku.hassannaqvi.cbt_kap_form", 0)
                     .versionName;
-            txtinstalldate.setText("Ver. " + versionName + "." + String.valueOf(versionCode) + " \r\n( Last Updated: " + new SimpleDateFormat("dd MMM. yyyy").format(new Date(installedOn)) + " )");
-
-            MainApp.versionCode = versionCode;
-            MainApp.versionName = versionName;
-
-
+            txtinstalldate.setText("Ver. " + MainApp.versionName + "." + String.valueOf(MainApp.versionCode) + " \r\n( Last Updated: " + new SimpleDateFormat("dd MMM. yyyy").format(new Date(installedOn)) + " )");
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
 
         // Set up the login form.
-        mEmailView = findViewById(R.id.email);
+//        mEmailView = findViewById(R.id.email);
         populateAutoComplete();
-
-
-        mPasswordView = findViewById(R.id.password);
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == EditorInfo.IME_ACTION_DONE || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
-                    MainApp.loginMem[1] = mEmailView.getText().toString();
-
-
-                    return true;
-
-                }
-                return false;
-            }
-        });
-
-        mEmailView2 = findViewById(R.id.email2);
-        populateAutoComplete();
-        mPasswordView2 = findViewById(R.id.password2);
-        mPasswordView2.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == EditorInfo.IME_ACTION_DONE || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
-                    MainApp.loginMem[2] = mEmailView2.getText().toString();
-                    return true;
-                }
-                return false;
-            }
-        });
 
         Target viewTarget = new ViewTarget(R.id.syncData, this);
 
@@ -195,35 +156,41 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                 .singleShot(42)
                 .build();
 
+//        mPasswordView = findViewById(R.id.password);
+        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
+                attemptLogin();
+
+                return true;
+            }
+        });
+
+
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                /*if (spUCs.getSelectedItemPosition() != 0 && spTalukas.getSelectedItemPosition() != 0) {
+                    attemptLogin();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Please Sync Data or select from combobox!!", Toast.LENGTH_LONG).show();
+                }*/
+
                 attemptLogin();
             }
         });
 
-        // District Spinner
-        // Populate from District Table
-       /* ArrayList<UCContract> ucList = new ArrayList<UCContract>();
-        ucList = db.getAllUC();*/
-
+        db = new DatabaseHelper(this);
 
 //        DB backup
 
         dbBackup();
-
-//        Testing visibility
-        if (Integer.valueOf(MainApp.versionName.split("\\.")[0]) > 0) {
-            testing.setVisibility(View.GONE);
-        } else {
-            testing.setVisibility(View.VISIBLE);
-        }
     }
-
 
     public void dbBackup() {
 
-        sharedPref = getSharedPreferences("cbt_kap_form", MODE_PRIVATE);
+        sharedPref = getSharedPreferences("kmc", MODE_PRIVATE);
         editor = sharedPref.edit();
 
         if (sharedPref.getBoolean("flag", false)) {
@@ -236,7 +203,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                 editor.commit();
             }
 
-            File folder = new File(Environment.getExternalStorageDirectory() + File.separator + "DMU-CBT-KAP");
+            File folder = new File(Environment.getExternalStorageDirectory() + File.separator + DatabaseHelper.PROJECT_NAME);
             boolean success = true;
             if (!folder.exists()) {
                 success = folder.mkdirs();
@@ -292,8 +259,8 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                 getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
-            new syncData(this).execute();
 
+            new syncData(this).execute();
 
         } else {
             Toast.makeText(this, "No network connection available.", Toast.LENGTH_SHORT).show();
@@ -319,15 +286,9 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         mEmailView.setError(null);
         mPasswordView.setError(null);
 
-        mEmailView2.setError(null);
-        mPasswordView2.setError(null);
-
         // Store values at the time of the login attempt.
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
-
-        String email2 = mEmailView2.getText().toString();
-        String password2 = mPasswordView2.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
@@ -338,22 +299,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             focusView = mPasswordView;
             cancel = true;
         }
-
-        if (!TextUtils.isEmpty(password2) && !isPasswordValid(password2)) {
-            mPasswordView2.setError(getString(R.string.error_invalid_password));
-            focusView = mPasswordView2;
-            cancel = true;
-        }
-
-        if (TextUtils.isEmpty(email2)) {
-            mEmailView2.setError(getString(R.string.error_field_required));
-            focusView = mEmailView2;
-            cancel = true;
-        } /*else if (!isEmailValid(email)) {
-            mEmailView.setError(getString(R.string.error_invalid_email));
-            focusView = mEmailView;
-            cancel = true;
-        }*/
 
         // Check for a valid email address.
         if (TextUtils.isEmpty(email)) {
@@ -366,7 +311,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             cancel = true;
         }*/
 
-
         if (cancel) {
             // There was an error; don't attempt login and focus the first
             // form field with an error.
@@ -375,7 +319,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new UserLoginTask(email, password, email2, password2);
+            mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
 
 
@@ -386,7 +330,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         //TODO: Replace this with your own logic
         return email.contains("@");
     }
-
 
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
@@ -462,27 +405,15 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
     }
 
-    @OnClick(edu.aku.hassannaqvi.cbt_kap_form.R.id.showPassword)
+    @OnClick(R.id.showPassword)
     void onShowPasswordClick() {
         //TODO implement
         if (mPasswordView.getTransformationMethod() == null) {
             mPasswordView.setTransformationMethod(new PasswordTransformationMethod());
-            mPasswordView.setCompoundDrawablesWithIntrinsicBounds(edu.aku.hassannaqvi.cbt_kap_form.R.drawable.ic_lock_black_24dp, 0, 0, 0);
+            txt_password.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_lock_black_24dp, 0, 0, 0);
         } else {
             mPasswordView.setTransformationMethod(null);
-            mPasswordView.setCompoundDrawablesWithIntrinsicBounds(edu.aku.hassannaqvi.cbt_kap_form.R.drawable.ic_lock_open_black_24dp, 0, 0, 0);
-        }
-    }
-
-    @OnClick(R.id.showPassword2)
-    void onShowPasswordClick2() {
-        //TODO implement
-        if (mPasswordView2.getTransformationMethod() == null) {
-            mPasswordView2.setTransformationMethod(new PasswordTransformationMethod());
-            mPasswordView2.setCompoundDrawablesWithIntrinsicBounds(edu.aku.hassannaqvi.cbt_kap_form.R.drawable.ic_lock_black_24dp, 0, 0, 0);
-        } else {
-            mPasswordView2.setTransformationMethod(null);
-            mPasswordView2.setCompoundDrawablesWithIntrinsicBounds(edu.aku.hassannaqvi.cbt_kap_form.R.drawable.ic_lock_open_black_24dp, 0, 0, 0);
+            txt_password.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_lock_open_black_24dp, 0, 0, 0);
         }
     }
 
@@ -492,6 +423,23 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
         Intent im = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(im);
+    }
+
+    public void showCredits(View view) {
+        if (clicks < 7) {
+            clicks++;
+            Toast.makeText(this, String.valueOf(clicks), Toast.LENGTH_SHORT).show();
+        } else {
+            clicks = 0;
+            Toast.makeText(this, "TEAM CREDITS: " +
+                            "\r\nHassan Naqvi, " +
+                            "Ali Azaz, " +
+                            "Gul Sanober, " +
+                            "Ramsha Ahmed, " +
+                            "Javed Khan",
+                    Toast.LENGTH_LONG)
+                    .show();
+        }
     }
 
     private interface ProfileQuery {
@@ -513,15 +461,9 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         private final String mEmail;
         private final String mPassword;
 
-        private final String mEmail2;
-        private final String mPassword2;
-
-        UserLoginTask(String email, String password, String email2, String password2) {
+        UserLoginTask(String email, String password) {
             mEmail = email;
             mPassword = password;
-
-            mEmail2 = email2;
-            mPassword2 = password2;
         }
 
 
@@ -531,7 +473,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
             try {
                 // Simulate network access.
-                Thread.sleep(2000);
+                sleep(2000);
             } catch (InterruptedException e) {
                 return false;
             }
@@ -555,33 +497,15 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
             LocationManager mlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
             if (mlocManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+
                 DatabaseHelper db = new DatabaseHelper(LoginActivity.this);
-                if ((mEmail.equals("dmu@aku") && mPassword.equals("aku?dmu")) || db.Login(mEmail, mPassword) ||
-                        (mEmail.equals("test1234") && mPassword.equals("test1234"))
-                        || (mEmail.equals("test12345") && mPassword.equals("test12345"))) {
+                if ((mEmail.equals("dmu@aku") && mPassword.equals("aku?dmu")) || db.Login(mEmail, mPassword)
+                        || (mEmail.equals("test1234") && mPassword.equals("test1234"))) {
                     MainApp.userName = mEmail;
+                    MainApp.admin = mEmail.contains("@");
 
-                    if ((mEmail2.equals("dmu@aku") && mPassword2.equals("aku?dmu")) || db.Login(mEmail2, mPassword2) ||
-                            (mEmail2.equals("test1234") && mPassword2.equals("test1234")) || (mEmail2.equals("test12345") && mPassword2.equals("test12345"))) {
-                        if (!mEmail.equals(mEmail2)) {
-
-                            MainApp.userName2 = mEmail2;
-                            MainApp.admin = mEmail2.contains("@");
-
-                            finish();
-
-                            Intent iLogin = new Intent(LoginActivity.this, MainActivity.class);
-                            startActivity(iLogin);
-                        } else {
-                            mEmailView2.setError("Same username..");
-                            mEmailView2.requestFocus();
-                        }
-
-                    } else {
-                        mPasswordView2.setError(getString(R.string.error_incorrect_password));
-                        mPasswordView2.requestFocus();
-                        Toast.makeText(LoginActivity.this, mEmail2 + " " + mPassword2, Toast.LENGTH_SHORT).show();
-                    }
+                    Intent iLogin = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(iLogin);
 
                 } else {
                     mPasswordView.setError(getString(R.string.error_incorrect_password));
@@ -624,7 +548,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         }
     }
 
-
     public class syncData extends AsyncTask<String, String, String> {
 
         private Context mContext;
@@ -639,32 +562,10 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
                 @Override
                 public void run() {
-                 /*   Toast.makeText(LoginActivity.this, "Sync User", Toast.LENGTH_LONG).show();
-                    new GetUsers(mContext).execute();
-                    Toast.makeText(LoginActivity.this, "Sync Tehsil's", Toast.LENGTH_LONG).show();
-                    new GetTehsil(mContext).execute();
-                    Toast.makeText(LoginActivity.this, "Sync UC's", Toast.LENGTH_LONG).show();
-                    new GetUCs(mContext).execute();
-                    Toast.makeText(LoginActivity.this, "Sync Villages", Toast.LENGTH_LONG).show();
-                    new GetVillages(mContext).execute();
-                    Toast.makeText(LoginActivity.this, "Sync NGOs", Toast.LENGTH_LONG).show();
-                    new GetSources(mContext).execute();
-                    Toast.makeText(LoginActivity.this, "Sync LHWs", Toast.LENGTH_LONG).show();
-                    new GetLHWs(mContext).execute();
-*/
 
-                    Toast.makeText(LoginActivity.this, "Sync Enum Blocks", Toast.LENGTH_LONG).show();
-                    // new GetAllData(mContext, "EnumBlock").execute();
+
                     Toast.makeText(LoginActivity.this, "Sync Users", Toast.LENGTH_LONG).show();
                     new GetAllData(mContext, "User").execute();
-                    Toast.makeText(LoginActivity.this, "Sync UC's", Toast.LENGTH_LONG).show();
-                    new GetAllData(mContext, "UCs").execute();
-                    Toast.makeText(LoginActivity.this, "Sync Villages", Toast.LENGTH_LONG).show();
-                    new GetAllData(mContext, "Villages").execute();
-                    Toast.makeText(LoginActivity.this, "Sync LHWs", Toast.LENGTH_LONG).show();
-                    new GetAllData(mContext, "LHW").execute();
-                    Toast.makeText(LoginActivity.this, "Sync Tehsil", Toast.LENGTH_LONG).show();
-                    new GetAllData(mContext, "Tehsil").execute();
                 }
             });
 
@@ -679,6 +580,8 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                 @Override
                 public void run() {
 
+//                    populateSpinner(mContext);
+
                     editor.putBoolean("flag", true);
                     editor.commit();
 
@@ -688,7 +591,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             }, 1200);
         }
     }
-
 
 }
 

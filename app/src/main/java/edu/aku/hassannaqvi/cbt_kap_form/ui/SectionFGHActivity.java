@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -21,10 +22,73 @@ public class SectionFGHActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bi = DataBindingUtil.setContentView(this,R.layout.activity_section_fgh);
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_fgh);
         bi.setCallback(this);
         this.setTitle("Section F,G and H");
+        setUpActivity();
+    }
 
+    private void setUpActivity() {
+        bi.ckf0199.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    bi.ckf01a.setChecked(false);
+                    bi.ckf01b.setChecked(false);
+                    bi.ckf0188.setChecked(false);
+                    bi.ckf01a.setEnabled(false);
+                    bi.ckf01b.setEnabled(false);
+                    bi.ckf0188.setEnabled(false);
+                } else {
+                    bi.ckf01a.setEnabled(true);
+                    bi.ckf01b.setEnabled(true);
+                    bi.ckf0188.setEnabled(true);
+                }
+            }
+        });
+        bi.ckg0199.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    bi.ckg01a.setChecked(false);
+                    bi.ckg01b.setChecked(false);
+                    bi.ckg0188.setChecked(false);
+                    bi.ckg01a.setEnabled(false);
+                    bi.ckg01b.setEnabled(false);
+                    bi.ckg0188.setEnabled(false);
+                } else {
+                    bi.ckg01a.setEnabled(true);
+                    bi.ckg01b.setEnabled(true);
+                    bi.ckg0188.setEnabled(true);
+                }
+            }
+        });
+        bi.ckh0199.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    bi.ckh01a.setChecked(false);
+                    bi.ckh01b.setChecked(false);
+                    bi.ckh01c.setChecked(false);
+                    bi.ckh01d.setChecked(false);
+                    bi.ckh01e.setChecked(false);
+                    bi.ckh0188.setChecked(false);
+                    bi.ckh01a.setEnabled(false);
+                    bi.ckh01b.setEnabled(false);
+                    bi.ckh01c.setEnabled(false);
+                    bi.ckh01d.setEnabled(false);
+                    bi.ckh01e.setEnabled(false);
+                    bi.ckh0188.setEnabled(false);
+                } else {
+                    bi.ckh01a.setEnabled(true);
+                    bi.ckh01b.setEnabled(true);
+                    bi.ckh01c.setEnabled(true);
+                    bi.ckh01d.setEnabled(true);
+                    bi.ckh01e.setEnabled(true);
+                    bi.ckh0188.setEnabled(true);
+                }
+            }
+        });
     }
 
 
@@ -56,7 +120,6 @@ public class SectionFGHActivity extends AppCompatActivity {
 
 
     private boolean formValidation() {
-
 
 
         if (!validatorClass.EmptyCheckBox(this, bi.ckf01, bi.ckf0188, bi.ckf0188x, getString(R.string.ckf01))) {
@@ -103,6 +166,7 @@ public class SectionFGHActivity extends AppCompatActivity {
         MainApp.fc.setsFGH(String.valueOf(sFGH));
 
     }
+
     private boolean UpdateDB() {
 
         //Long rowId;
