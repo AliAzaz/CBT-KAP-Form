@@ -33,6 +33,14 @@
                 android:text="@string/ckfheading"
                 android:textColor="@color/colorHeading"
                 android:textSize="35sp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorPrimary"
+                android:text="@string/ckf01"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@android:color/white" />
 
             <LinearLayout
                 android:id="@+id/ckf01"
@@ -90,7 +98,14 @@
                 android:text="@string/ckgheading"
                 android:textColor="@color/colorHeading"
                 android:textSize="35sp" />
-
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorPrimary"
+                android:text="@string/ckg01"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@android:color/white" />
             <LinearLayout
                 android:id="@+id/ckg01"
                 android:layout_width="match_parent"
@@ -147,7 +162,14 @@
                 android:text="@string/ckhheading"
                 android:textColor="@color/colorHeading"
                 android:textSize="35sp" />
-
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorPrimary"
+                android:text="@string/ckh01"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@android:color/white" />
             <LinearLayout
                 android:id="@+id/ckh01"
                 android:layout_width="match_parent"

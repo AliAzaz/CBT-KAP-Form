@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layoutDirection="rtl"
     tools:context="edu.aku.hassannaqvi.cbt_kap_form.ui.SectionBActivity">
@@ -22,10 +23,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="2dp"
             android:background="@color/colorPrimaryDark"
             android:gravity="center"
             android:text="@string/ckbheading"
-            android:textSize="35sp" />
+            android:textSize="40sp" />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -87,14 +89,14 @@
                         android:textColor="@android:color/white" />
 
                     <!--ckb02a-->
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:background="@color/colorPrimary"
+                        android:layout_marginTop="1dp"
+                        android:background="@color/pink_100"
                         android:text="@string/ckb02a"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@android:color/white" />
+                        android:textColor="@color/colorPrimaryDark" />
 
                     <RadioGroup
                         android:id="@+id/ckb02a"
@@ -122,14 +124,14 @@
 
 
                     <!--ckb02b-->
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:background="@color/colorPrimary"
+                        android:layout_marginTop="1dp"
+                        android:background="@color/pink_100"
                         android:text="@string/ckb02b"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@android:color/white" />
+                        android:textColor="@color/colorPrimaryDark" />
 
                     <RadioGroup
                         android:id="@+id/ckb02b"
@@ -157,14 +159,14 @@
 
 
                     <!--ckb02c-->
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:background="@color/colorPrimary"
+                        android:layout_marginTop="1dp"
+                        android:background="@color/pink_100"
                         android:text="@string/ckb02c"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@android:color/white" />
+                        android:textColor="@color/colorPrimaryDark" />
 
                     <RadioGroup
                         android:id="@+id/ckb02c"
@@ -192,14 +194,14 @@
 
 
                     <!--ckb02d-->
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:background="@color/colorPrimary"
+                        android:layout_marginTop="1dp"
+                        android:background="@color/pink_100"
                         android:text="@string/ckb02d"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@android:color/white" />
+                        android:textColor="@color/colorPrimaryDark" />
 
                     <RadioGroup
                         android:id="@+id/ckb02d"
@@ -227,14 +229,14 @@
 
 
                     <!--ckb02e-->
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:background="@color/colorPrimary"
+                        android:layout_marginTop="1dp"
+                        android:background="@color/pink_100"
                         android:text="@string/ckb02e"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@android:color/white" />
+                        android:textColor="@color/colorPrimaryDark" />
 
                     <RadioGroup
                         android:id="@+id/ckb02e"
@@ -262,14 +264,14 @@
 
 
                     <!--ckb02f-->
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:background="@color/colorPrimary"
+                        android:layout_marginTop="1dp"
+                        android:background="@color/pink_100"
                         android:text="@string/ckb02f"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@android:color/white" />
+                        android:textColor="@color/colorPrimaryDark" />
 
                     <RadioGroup
                         android:id="@+id/ckb02f"
@@ -297,14 +299,14 @@
 
 
                     <!--ckb02g-->
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:background="@color/colorPrimary"
+                        android:layout_marginTop="1dp"
+                        android:background="@color/pink_100"
                         android:text="@string/ckb02g"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@android:color/white" />
+                        android:textColor="@color/colorPrimaryDark" />
 
                     <RadioGroup
                         android:id="@+id/ckb02g"
@@ -332,14 +334,14 @@
 
 
                     <!--ckb02h-->
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:background="@color/colorPrimary"
+                        android:layout_marginTop="1dp"
+                        android:background="@color/pink_100"
                         android:text="@string/ckb02h"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@android:color/white" />
+                        android:textColor="@color/colorPrimaryDark" />
 
                     <RadioGroup
                         android:id="@+id/ckb02h"
@@ -367,14 +369,15 @@
 
 
                     <!--ckb02i-->
+
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:background="@color/colorPrimary"
+                        android:layout_marginTop="1dp"
+                        android:background="@color/pink_100"
                         android:text="@string/ckb02i"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@android:color/white" />
+                        android:textColor="@color/colorPrimaryDark" />
 
                     <RadioGroup
                         android:id="@+id/ckb02i"
@@ -402,14 +405,14 @@
 
 
                     <!--ckb02j-->
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:background="@color/colorPrimary"
+                        android:layout_marginTop="1dp"
+                        android:background="@color/pink_100"
                         android:text="@string/other"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@android:color/white" />
+                        android:textColor="@color/colorPrimaryDark" />
 
                     <RadioGroup
                         android:id="@+id/ckb02j"
@@ -856,14 +859,13 @@
                     android:id="@+id/ckb09"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
                     <RadioButton
                         android:id="@+id/ckb09a"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
                         android:text="@string/ckb09a" />
 
                     <RadioButton
@@ -871,7 +873,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
                         android:text="@string/other" />
 
                     <RadioButton
@@ -879,7 +880,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
                         android:text="@string/dkn" />
 
                 </RadioGroup>

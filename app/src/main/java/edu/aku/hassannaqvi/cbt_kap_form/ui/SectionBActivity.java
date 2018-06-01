@@ -55,7 +55,7 @@ public class SectionBActivity extends AppCompatActivity {
                     bi.ckb02h.clearCheck();
                     bi.ckb02i.clearCheck();
                     bi.ckb02j.clearCheck();
-                }else {
+                } else {
                     bi.fldGrpckb01.setVisibility(VISIBLE);
                 }
             }
@@ -76,7 +76,7 @@ public class SectionBActivity extends AppCompatActivity {
                     bi.ckb07d.setEnabled(false);
                     bi.ckb0788.setEnabled(false);
 
-                }else {
+                } else {
                     bi.ckb07a.setEnabled(true);
                     bi.ckb07b.setEnabled(true);
                     bi.ckb07c.setEnabled(true);
@@ -104,7 +104,7 @@ public class SectionBActivity extends AppCompatActivity {
                     bi.ckb1088.setEnabled(false);
 
 
-                }else {
+                } else {
                     bi.ckb10a.setEnabled(true);
                     bi.ckb10b.setEnabled(true);
                     bi.ckb10c.setEnabled(true);
@@ -133,7 +133,7 @@ public class SectionBActivity extends AppCompatActivity {
                     bi.ckb11e.setEnabled(false);
                     bi.ckb11f.setEnabled(false);
                     bi.ckb1188.setEnabled(false);
-                }else {
+                } else {
                     bi.ckb11a.setEnabled(true);
                     bi.ckb11b.setEnabled(true);
                     bi.ckb11c.setEnabled(true);
@@ -285,7 +285,6 @@ public class SectionBActivity extends AppCompatActivity {
         sB.put("ckb1199", bi.ckb1199.isChecked() ? "99" : "0");
 
 
-
         sB.put("ckb1188x", bi.ckb1188x.getText().toString());
 
 
@@ -302,58 +301,60 @@ public class SectionBActivity extends AppCompatActivity {
         if (bi.ckb01a.isChecked()) {
 
 
-        if (!validatorClass.EmptyRadioButton(this, bi.ckb02a, bi.ckb02aa, getString(R.string.ckb02a))) {
-            return false;
-        }
+            if (!validatorClass.EmptyRadioButton(this, bi.ckb02a, bi.ckb02aa, getString(R.string.ckb02a))) {
+                return false;
+            }
 
 
-        if (!validatorClass.EmptyRadioButton(this, bi.ckb02b, bi.ckb02ba, getString(R.string.ckb02b))) {
-            return false;
-        }
+            if (!validatorClass.EmptyRadioButton(this, bi.ckb02b, bi.ckb02ba, getString(R.string.ckb02b))) {
+                return false;
+            }
 
 
-        if (!validatorClass.EmptyRadioButton(this, bi.ckb02c, bi.ckb02ca, getString(R.string.ckb02c))) {
-            return false;
-        }
+            if (!validatorClass.EmptyRadioButton(this, bi.ckb02c, bi.ckb02ca, getString(R.string.ckb02c))) {
+                return false;
+            }
 
 
-        if (!validatorClass.EmptyRadioButton(this, bi.ckb02d, bi.ckb02da, getString(R.string.ckb02d))) {
-            return false;
-        }
+            if (!validatorClass.EmptyRadioButton(this, bi.ckb02d, bi.ckb02da, getString(R.string.ckb02d))) {
+                return false;
+            }
 
 
-        if (!validatorClass.EmptyRadioButton(this, bi.ckb02e, bi.ckb02ea, getString(R.string.ckb02e))) {
-            return false;
-        }
+            if (!validatorClass.EmptyRadioButton(this, bi.ckb02e, bi.ckb02ea, getString(R.string.ckb02e))) {
+                return false;
+            }
 
 
-        if (!validatorClass.EmptyRadioButton(this, bi.ckb02f, bi.ckb02fa, getString(R.string.ckb02f))) {
-            return false;
-        }
+            if (!validatorClass.EmptyRadioButton(this, bi.ckb02f, bi.ckb02fa, getString(R.string.ckb02f))) {
+                return false;
+            }
 
 
-        if (!validatorClass.EmptyRadioButton(this, bi.ckb02g, bi.ckb02ga, getString(R.string.ckb02g))) {
-            return false;
-        }
+            if (!validatorClass.EmptyRadioButton(this, bi.ckb02g, bi.ckb02ga, getString(R.string.ckb02g))) {
+                return false;
+            }
 
-        if (!validatorClass.EmptyRadioButton(this, bi.ckb02h, bi.ckb02ha, getString(R.string.ckb02h))) {
-            return false;
-        }
-
-
-        if (!validatorClass.EmptyRadioButton(this, bi.ckb02i, bi.ckb02ia, getString(R.string.ckb02i))) {
-            return false;
-        }
+            if (!validatorClass.EmptyRadioButton(this, bi.ckb02h, bi.ckb02ha, getString(R.string.ckb02h))) {
+                return false;
+            }
 
 
-        if (!validatorClass.EmptyRadioButton(this, bi.ckb02j, bi.ckb02ja, getString(R.string.other))) {
-            return false;
-        }
+            if (!validatorClass.EmptyRadioButton(this, bi.ckb02i, bi.ckb02ia, getString(R.string.ckb02i))) {
+                return false;
+            }
 
 
-        if (!validatorClass.EmptyTextBox(this, bi.ckb0288x, getString(R.string.other))) {
-            return false;
-        }
+            if (!validatorClass.EmptyRadioButton(this, bi.ckb02j, bi.ckb02ja, getString(R.string.other))) {
+                return false;
+            }
+
+            if (bi.ckb02ja.isChecked()) {
+                if (!validatorClass.EmptyTextBox(this, bi.ckb0288x, getString(R.string.other))) {
+                    return false;
+                }
+            }
+
         }
 
 
@@ -367,12 +368,12 @@ public class SectionBActivity extends AppCompatActivity {
         }
 
 
-        if (!validatorClass.EmptyCheckBox(this, bi.fldGrpckb05,  bi.ckb0588, bi.ckb0588x, getString(R.string.ckb05))) {
+        if (!validatorClass.EmptyCheckBox(this, bi.fldGrpckb05, bi.ckb0588, bi.ckb0588x, getString(R.string.ckb05))) {
             return false;
         }
 
 
-        if (!validatorClass.EmptyCheckBox(this, bi.fldGrpckb06,  bi.ckb0688, bi.ckb0688x, getString(R.string.ckb06))) {
+        if (!validatorClass.EmptyCheckBox(this, bi.fldGrpckb06, bi.ckb0688, bi.ckb0688x, getString(R.string.ckb06))) {
             return false;
         }
 
@@ -382,7 +383,7 @@ public class SectionBActivity extends AppCompatActivity {
         }
 
 
-        if (!validatorClass.EmptyRadioButton(this, bi.ckb08, bi.ckb0888,bi.ckb0888x, getString(R.string.ckb08))) {
+        if (!validatorClass.EmptyRadioButton(this, bi.ckb08, bi.ckb0888, bi.ckb0888x, getString(R.string.ckb08))) {
             return false;
         }
 
@@ -403,6 +404,7 @@ public class SectionBActivity extends AppCompatActivity {
 
         return true;
     }
+
     public void BtnEnd() {
         MainApp.endActivity(this, this);
     }
@@ -421,13 +423,14 @@ public class SectionBActivity extends AppCompatActivity {
 
                 finish();
 
-                startActivity(new Intent(this, MainActivity.class));
+                startActivity(new Intent(this, SectionCActivity.class));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
         }
     }
+
     private boolean UpdateDB() {
 
         //Long rowId;
