@@ -79,12 +79,12 @@ public class EndingActivity extends AppCompatActivity {
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
-        MainApp.fc.setIstatus(binding.istatusa.isChecked() ? "1"
+        MainApp.fc.setistatus(binding.istatusa.isChecked() ? "1"
                 : binding.istatusb.isChecked() ? "2"
                 : "0");
 
 //        MainApp.fc.setIstatus88x(istatus88x.getText().toString());
-        MainApp.fc.setEndingdatetime(dtToday);
+        MainApp.fc.setendingdatetime(dtToday);
 
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();

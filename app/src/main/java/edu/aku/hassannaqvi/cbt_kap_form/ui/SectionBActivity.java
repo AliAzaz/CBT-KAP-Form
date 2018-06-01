@@ -22,13 +22,13 @@ public class SectionBActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_d);
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_b);
 
-        this.setTitle("Section D");
+        this.setTitle("Section B");
 
         db = new DatabaseHelper(this);
         bi.setCallback(this);
-        setUpForm();
+
     }
 
 
@@ -137,7 +137,6 @@ public class SectionBActivity extends AppCompatActivity {
 
 
         sB.put("ckb09", bi.ckb09a.isChecked() ? "1"
-                : bi.ckb09b.isChecked() ? "2"
                 : bi.ckb0996.isChecked() ? "96"
                 : bi.ckb0998.isChecked() ? "98"
                 : "0");
@@ -172,7 +171,7 @@ public class SectionBActivity extends AppCompatActivity {
         sB.put("ckb1196x", bi.ckb1196x.getText().toString());
 
 
-        MainApp.fc.setSB(String.valueOf(sB));
+        MainApp.fc.setsB(String.valueOf(sB));
 
     }
 
@@ -228,7 +227,7 @@ public class SectionBActivity extends AppCompatActivity {
         }
 
 
-        if (!validatorClass.EmptyRadioButton(this, bi.ckb02j, bi.ckb02ja, getString(R.string.ckb02j))) {
+        if (!validatorClass.EmptyRadioButton(this, bi.ckb02j, bi.ckb02ja, getString(R.string.other))) {
             return false;
         }
 
@@ -238,27 +237,27 @@ public class SectionBActivity extends AppCompatActivity {
         }
 
 
-        if (!validatorClass.EmptyCheckBox(this, bi.fldGrpckb03, bi.ckb03a, bi, ckb0396x, getString(R.string.ckb03a))) {
+        if (!validatorClass.EmptyCheckBox(this, bi.fldGrpckb03, bi.ckb0396, bi.ckb0396x, getString(R.string.ckb03a))) {
             return false;
         }
 
 
-        if (!validatorClass.EmptyCheckBox(this, bi.fldGrpckb04, bi.ckb04a, bi, ckb0496x, getString(R.string.ckb04a))) {
+        if (!validatorClass.EmptyCheckBox(this, bi.fldGrpckb04, bi.ckb0496, bi.ckb0496x, getString(R.string.ckb04a))) {
             return false;
         }
 
 
-        if (!validatorClass.EmptyCheckBox(this, bi.fldGrpckb05, bi.ckb05a, bi, ckb0596x, getString(R.string.ckb05a))) {
+        if (!validatorClass.EmptyCheckBox(this, bi.fldGrpckb05,  bi.ckb0596, bi.ckb0596x, getString(R.string.ckb05a))) {
             return false;
         }
 
 
-        if (!validatorClass.EmptyCheckBox(this, bi.fldGrpckb06, bi.ckb06a, bi, ckb0696x, getString(R.string.ckb06a))) {
+        if (!validatorClass.EmptyCheckBox(this, bi.fldGrpckb06,  bi.ckb0696, bi.ckb0696x, getString(R.string.ckb06a))) {
             return false;
         }
 
 
-        if (!validatorClass.EmptyCheckBox(this, bi.fldGrpckb07, bi.ckb07a, bi, ckb0796x, getString(R.string.ckb07a))) {
+        if (!validatorClass.EmptyCheckBox(this, bi.fldGrpckb07, bi.ckb0796, bi.ckb0796x, getString(R.string.ckb07a))) {
             return false;
         }
 
@@ -268,17 +267,17 @@ public class SectionBActivity extends AppCompatActivity {
         }
 
 
-        if (!validatorClass.EmptyRadioButton(this, bi.ckb09, bi.ckb09a, bi.ckb0996x, getString(R.string.ckb09))) {
+        if (!validatorClass.EmptyRadioButton(this, bi.ckb09, bi.ckb0996, bi.ckb0996x, getString(R.string.ckb09))) {
             return false;
         }
 
 
-        if (!validatorClass.EmptyCheckBox(this, bi.fldGrpckb10, bi.ckb10a, bi.ckb1096x, getString(R.string.ckb10a))) {
+        if (!validatorClass.EmptyCheckBox(this, bi.fldGrpckb10, bi.ckb1096, bi.ckb1096x, getString(R.string.ckb10a))) {
             return false;
         }
 
 
-        if (!validatorClass.EmptyCheckBox(this, bi.fldGrpckb11, bi.ckb11a, bi.ckb1196x, getString(R.string.ckb11a))) {
+        if (!validatorClass.EmptyCheckBox(this, bi.fldGrpckb11, bi.ckb1196, bi.ckb1196x, getString(R.string.ckb11a))) {
             return false;
         }
 

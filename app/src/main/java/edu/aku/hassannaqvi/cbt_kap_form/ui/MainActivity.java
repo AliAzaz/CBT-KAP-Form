@@ -169,8 +169,8 @@ public class MainActivity extends Activity {
                 rSumText += "--------------------------------------------------\r\n";
 
                 for (FormsContract fc : todaysForms) {
-                    if (fc.getIstatus() != null) {
-                        switch (fc.getIstatus()) {
+                    if (fc.getistatus() != null) {
+                        switch (fc.getistatus()) {
                             case "1":
                                 iStatus = "\tComplete";
                                 break;
@@ -194,7 +194,7 @@ public class MainActivity extends Activity {
 
                     rSumText += " " + iStatus + " ";
 
-                    rSumText += (fc.getSynced() == null ? "\t\tNot Synced" : "\t\tSynced");
+                    rSumText += (fc.getsynced() == null ? "\t\tNot Synced" : "\t\tSynced");
                     rSumText += "\r\n";
                     rSumText += "--------------------------------------------------\r\n";
                 }
@@ -255,7 +255,7 @@ public class MainActivity extends Activity {
     }
 
     public void openForm() {
-        final Intent oF = new Intent(MainActivity.this, SectionDActivity.class);
+        final Intent oF = new Intent(MainActivity.this, SectionAActivity.class);
 
         if (sharedPref.getString("tagName", null) != "" && sharedPref.getString("tagName", null) != null && !MainApp.userName.equals("0000")) {
             startActivity(oF);
@@ -458,31 +458,31 @@ public class MainActivity extends Activity {
 
     public void openB(View v) {
 
-//        startActivity1(SectionBActivity.class);
+        startActivity1(SectionBActivity.class);
 
     }
 
     public void openC(View v) {
 
-//        startActivity1(SectionCActivity.class);
+        startActivity1(SectionCActivity.class);
 
     }
 
     public void openD(View v) {
 
-        startActivity1(SectionDActivity.class);
+//        startActivity1(SectionDActivity.class);
 
     }
 
     public void openE(View v) {
 
-//        startActivity1(SectionEActivity.class);
+        startActivity1(SectionEActivity.class);
 
     }
 
     public void openF(View v) {
 
-//        startActivity1(SectionFActivity.class);
+        startActivity1(SectionFGHActivity.class);
 
     }
 
