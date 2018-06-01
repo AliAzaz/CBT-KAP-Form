@@ -1,10 +1,9 @@
 package edu.aku.hassannaqvi.cbt_kap_form.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
@@ -18,22 +17,23 @@ import edu.aku.hassannaqvi.cbt_kap_form.databinding.ActivitySectionCBinding;
 import edu.aku.hassannaqvi.cbt_kap_form.validation.validatorClass;
 
 public class SectionCActivity extends AppCompatActivity {
-ActivitySectionCBinding bi;
+    ActivitySectionCBinding bi;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bi = DataBindingUtil.setContentView(this,R.layout.activity_section_c);
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_c);
         bi.setCallback(this);
         this.setTitle("Section C and D");
 
-setUpActivity();
+        setUpActivity();
     }
 
     private void setUpActivity() {
         bi.ckc0799.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
+                if (isChecked) {
                     bi.ckc07a.setChecked(false);
                     bi.ckc07b.setChecked(false);
                     bi.ckc07c.setChecked(false);
@@ -44,7 +44,7 @@ setUpActivity();
                     bi.ckc07c.setEnabled(false);
                     bi.ckc07d.setEnabled(false);
                     bi.ckc0788.setEnabled(false);
-                }else {
+                } else {
                     bi.ckc07a.setEnabled(true);
                     bi.ckc07b.setEnabled(true);
                     bi.ckc07c.setEnabled(true);
@@ -67,7 +67,7 @@ setUpActivity();
                     bi.ckd01c.setEnabled(false);
                     bi.ckd01d.setEnabled(false);
                     bi.ckd0188.setEnabled(false);
-                }else {
+                } else {
                     bi.ckd01a.setEnabled(true);
                     bi.ckd01b.setEnabled(true);
                     bi.ckd01c.setEnabled(true);
@@ -106,31 +106,31 @@ setUpActivity();
     }
 
     private boolean formValidation() {
-        if (!validatorClass.EmptyRadioButton(this, bi.ckc01, bi.ckc01c,bi.ckc01cx, getString(R.string.ckc01))) {
+        if (!validatorClass.EmptyRadioButton(this, bi.ckc01, bi.ckc01c, bi.ckc01cx, getString(R.string.ckc01))) {
             return false;
         }
-        if (!validatorClass.EmptyRadioButton(this, bi.ckc02, bi.ckc02c,bi.ckc02cx, getString(R.string.ckc02))) {
+        if (!validatorClass.EmptyRadioButton(this, bi.ckc02, bi.ckc02c, bi.ckc02cx, getString(R.string.ckc02))) {
             return false;
         }
-        if (!validatorClass.EmptyRadioButton(this, bi.ckc03, bi.ckc03c,bi.ckc03cx, getString(R.string.ckc03))) {
+        if (!validatorClass.EmptyRadioButton(this, bi.ckc03, bi.ckc03c, bi.ckc03cx, getString(R.string.ckc03))) {
             return false;
         }
-        if (!validatorClass.EmptyRadioButton(this, bi.ckc04, bi.ckc04c,bi.ckc04cx, getString(R.string.ckc04))) {
+        if (!validatorClass.EmptyRadioButton(this, bi.ckc04, bi.ckc04c, bi.ckc04cx, getString(R.string.ckc04))) {
             return false;
         }
-        if (!validatorClass.EmptyRadioButton(this, bi.ckc05, bi.ckc05c,bi.ckc05cx, getString(R.string.ckc05))) {
+        if (!validatorClass.EmptyRadioButton(this, bi.ckc05, bi.ckc05c, bi.ckc05cx, getString(R.string.ckc05))) {
             return false;
         }
-        if (!validatorClass.EmptyRadioButton(this, bi.ckc06, bi.ckc06c,bi.ckc06cx, getString(R.string.ckc06))) {
+        if (!validatorClass.EmptyRadioButton(this, bi.ckc06, bi.ckc06c, bi.ckc06cx, getString(R.string.ckc06))) {
             return false;
         }
-        if (!validatorClass.EmptyCheckBox(this, bi.ckc07, bi.ckc0788,bi.ckc0788x, getString(R.string.ckc07))) {
+        if (!validatorClass.EmptyCheckBox(this, bi.ckc07, bi.ckc0788, bi.ckc0788x, getString(R.string.ckc07))) {
             return false;
         }
-        if (!validatorClass.EmptyRadioButton(this, bi.ckc08, bi.ckc08c,bi.ckc08cx, getString(R.string.ckc08))) {
+        if (!validatorClass.EmptyRadioButton(this, bi.ckc08, bi.ckc08c, bi.ckc08cx, getString(R.string.ckc08))) {
             return false;
         }
-        if (!validatorClass.EmptyCheckBox(this, bi.ckd01, bi.ckd0188,bi.ckd0188x, getString(R.string.ckd01))) {
+        if (!validatorClass.EmptyCheckBox(this, bi.ckd01, bi.ckd0188, bi.ckd0188x, getString(R.string.ckd01))) {
             return false;
         }
 
@@ -145,13 +145,13 @@ setUpActivity();
                 : bi.ckc01c.isChecked() ? "3"
                 : "0");
         sC.put("ckc01cx", bi.ckc01cx.getText().toString());
-        
+
         sC.put("ckc02", bi.ckc02a.isChecked() ? "1"
                 : bi.ckc02b.isChecked() ? "2"
                 : bi.ckc02c.isChecked() ? "3"
                 : "0");
         sC.put("ckc02cx", bi.ckc02cx.getText().toString());
-        
+
         sC.put("ckc03", bi.ckc03a.isChecked() ? "1"
                 : bi.ckc03b.isChecked() ? "2"
                 : bi.ckc03c.isChecked() ? "3"
@@ -201,12 +201,13 @@ setUpActivity();
         MainApp.fc.setsCD(String.valueOf(sC));
 
     }
+
     private boolean UpdateDB() {
 
         //Long rowId;
         DatabaseHelper db = new DatabaseHelper(this);
 
-       int updcount = db.updatesCD();
+        int updcount = db.updatesCD();
 
         if (updcount == 1) {
             //Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();

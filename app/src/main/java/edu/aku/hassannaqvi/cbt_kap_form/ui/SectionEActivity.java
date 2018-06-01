@@ -2,8 +2,8 @@ package edu.aku.hassannaqvi.cbt_kap_form.ui;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
@@ -45,7 +45,7 @@ public class SectionEActivity extends AppCompatActivity {
                     bi.cke01c.setEnabled(false);
                     bi.cke01d.setEnabled(false);
                     bi.cke0188.setEnabled(false);
-                }else {
+                } else {
                     bi.cke01a.setEnabled(true);
                     bi.cke01b.setEnabled(true);
                     bi.cke01c.setEnabled(true);
@@ -69,7 +69,7 @@ public class SectionEActivity extends AppCompatActivity {
                     bi.cke02c.setEnabled(false);
                     bi.cke0288.setEnabled(false);
 
-                }else {
+                } else {
                     bi.cke02a.setEnabled(true);
                     bi.cke02b.setEnabled(true);
                     bi.cke02c.setEnabled(true);
@@ -90,7 +90,7 @@ public class SectionEActivity extends AppCompatActivity {
                     bi.cke0588.setEnabled(false);
 
 
-                }else {
+                } else {
                     bi.cke05a.setEnabled(true);
                     bi.cke05b.setEnabled(true);
                     bi.cke0588.setEnabled(true);
@@ -113,7 +113,7 @@ public class SectionEActivity extends AppCompatActivity {
                     bi.cke06c.setEnabled(false);
                     bi.cke06d.setEnabled(false);
                     bi.cke0688.setEnabled(false);
-                }else {
+                } else {
                     bi.cke06a.setEnabled(true);
                     bi.cke06b.setEnabled(true);
                     bi.cke06c.setEnabled(true);
