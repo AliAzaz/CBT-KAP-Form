@@ -18,9 +18,12 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
+import edu.aku.hassannaqvi.cbt_kap_form.contracts.ChildContract;
+import edu.aku.hassannaqvi.cbt_kap_form.contracts.ChildContract.ChildTable;
 import edu.aku.hassannaqvi.cbt_kap_form.contracts.FormsContract;
 import edu.aku.hassannaqvi.cbt_kap_form.contracts.FormsContract.FormsTable;
 import edu.aku.hassannaqvi.cbt_kap_form.contracts.UsersContract;
+import edu.aku.hassannaqvi.cbt_kap_form.contracts.UsersContract.UsersTable;
 
 /**
  * Created by hassan.naqvi on 11/30/2016.
@@ -39,45 +42,56 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String SQL_CREATE_FORMS = "CREATE TABLE "
             + FormsTable.TABLE_NAME + "("
             + FormsTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-            FormsTable.COLUMN__UID  + " TEXT,"+
-            FormsTable.COLUMN_PROJECTNAME + " TEXT,"+
-            FormsTable.COLUMN_FORMDATE + " TEXT,"+
-            FormsTable.COLUMN_USER + " TEXT,"+
-            FormsTable.COLUMN_CHILD_ID + " TEXT,"+
-            FormsTable.COLUMN_CHILD_NAME + " TEXT,"+
-            FormsTable.COLUMN_STUDY_ARM + " TEXT,"+
-            FormsTable.COLUMN_SA + " TEXT,"+
-            FormsTable.COLUMN_SB + " TEXT,"+
-            FormsTable.COLUMN_SCD + " TEXT,"+
-            FormsTable.COLUMN_SE + " TEXT,"+
-            FormsTable.COLUMN_SFGH + " TEXT,"+
-            FormsTable.COLUMN_ISTATUS + " TEXT,"+
-            FormsTable.COLUMN_ISTATUS88X + " TEXT,"+
-            FormsTable.COLUMN_DEVICEID  + " TEXT,"+
-            FormsTable.COLUMN_DEVICETAGID  + " TEXT,"+
-            FormsTable.COLUMN_GPSLAT + " TEXT,"+
-            FormsTable.COLUMN_GPSLNG + " TEXT,"+
-            FormsTable.COLUMN_GPSDT + " TEXT,"+
-            FormsTable.COLUMN_GPSACC + " TEXT,"+
-            FormsTable.COLUMN_GPSELEV + " TEXT,"+
-            FormsTable.COLUMN_APPVERSION + " TEXT,"+
-            FormsTable.COLUMN_ENDINGDATETIME + " TEXT,"+
-            FormsTable.COLUMN_SYNCED  + " TEXT,"+
-            FormsTable.COLUMN_SYNCED_DATE  + " TEXT"
+            FormsTable.COLUMN__UID + " TEXT," +
+            FormsTable.COLUMN_PROJECTNAME + " TEXT," +
+            FormsTable.COLUMN_FORMDATE + " TEXT," +
+            FormsTable.COLUMN_USER + " TEXT," +
+            FormsTable.COLUMN_CHILD_ID + " TEXT," +
+            FormsTable.COLUMN_CHILD_NAME + " TEXT," +
+            FormsTable.COLUMN_STUDY_ARM + " TEXT," +
+            FormsTable.COLUMN_SA + " TEXT," +
+            FormsTable.COLUMN_SB + " TEXT," +
+            FormsTable.COLUMN_SCD + " TEXT," +
+            FormsTable.COLUMN_SE + " TEXT," +
+            FormsTable.COLUMN_SFGH + " TEXT," +
+            FormsTable.COLUMN_ISTATUS + " TEXT," +
+            FormsTable.COLUMN_ISTATUS88X + " TEXT," +
+            FormsTable.COLUMN_DEVICEID + " TEXT," +
+            FormsTable.COLUMN_DEVICETAGID + " TEXT," +
+            FormsTable.COLUMN_GPSLAT + " TEXT," +
+            FormsTable.COLUMN_GPSLNG + " TEXT," +
+            FormsTable.COLUMN_GPSDT + " TEXT," +
+            FormsTable.COLUMN_GPSACC + " TEXT," +
+            FormsTable.COLUMN_GPSELEV + " TEXT," +
+            FormsTable.COLUMN_APPVERSION + " TEXT," +
+            FormsTable.COLUMN_ENDINGDATETIME + " TEXT," +
+            FormsTable.COLUMN_SYNCED + " TEXT," +
+            FormsTable.COLUMN_SYNCED_DATE + " TEXT"
             + " );";
-
+    private static final String SQL_CREATE_CHILD_TABLE = "CREATE TABLE "
+            + ChildTable.TABLE_NAME + "("
+            + ChildTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            ChildTable.COLUMN_UID + " TEXT," +
+            ChildTable.COLUMN_HHDT + " TEXT," +
+            ChildTable.COLUMN_TEHSIL + " TEXT," +
+            ChildTable.COLUMN_HFACILITY + " TEXT," +
+            ChildTable.COLUMN_LHWCODE + " TEXT," +
+            ChildTable.COLUMN_HOUSEHOLD + " TEXT," +
+            ChildTable.COLUMN_CHILDID + " TEXT," +
+            ChildTable.COLUMN_UCCODE + " TEXT," +
+            ChildTable.COLUMN_VILLAGENAME + " TEXT"
+            + " );";
 
     private static final String SQL_DELETE_USERS =
             "DROP TABLE IF EXISTS " + UsersContract.UsersTable.TABLE_NAME;
     private static final String SQL_DELETE_FORMS =
             "DROP TABLE IF EXISTS " + FormsTable.TABLE_NAME;
-
+    private static final String SQL_DELETE_CHILD_TABLE =
+            "DROP TABLE IF EXISTS " + ChildTable.TABLE_NAME;
 
     private final String TAG = "DatabaseHelper";
 
-
     public String spDateT = new SimpleDateFormat("dd-MM-yy").format(new Date().getTime());
-
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -85,16 +99,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
         db.execSQL(SQL_CREATE_USERS);
         db.execSQL(SQL_CREATE_FORMS);
-
+        db.execSQL(SQL_CREATE_CHILD_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL(SQL_DELETE_USERS);
         db.execSQL(SQL_DELETE_FORMS);
+        db.execSQL(SQL_DELETE_CHILD_TABLE);
     }
 
     public ArrayList<UsersContract> getAllUsers() {
@@ -122,25 +136,61 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public void syncUsers(JSONArray userlist) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(UsersContract.UsersTable.TABLE_NAME, null, null);
-
+        db.delete(UsersTable.TABLE_NAME, null, null);
         try {
             JSONArray jsonArray = userlist;
             for (int i = 0; i < jsonArray.length(); i++) {
+
                 JSONObject jsonObjectUser = jsonArray.getJSONObject(i);
-                String userName = jsonObjectUser.getString("username");
-                String password = jsonObjectUser.getString("password");
 
-
+                UsersContract user = new UsersContract();
+                user.Sync(jsonObjectUser);
                 ContentValues values = new ContentValues();
 
-                values.put(UsersContract.UsersTable.ROW_USERNAME, userName);
-                values.put(UsersContract.UsersTable.ROW_PASSWORD, password);
-                db.insert(UsersContract.UsersTable.TABLE_NAME, null, values);
+                values.put(UsersTable.ROW_USERNAME, user.getUserName());
+                values.put(UsersTable.ROW_PASSWORD, user.getPassword());
+                db.insert(UsersTable.TABLE_NAME, null, values);
             }
-            db.close();
+
 
         } catch (Exception e) {
+            Log.d(TAG, "syncUser(e): " + e);
+        } finally {
+            db.close();
+        }
+    }
+
+    public void syncChildData(JSONArray childlist) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(ChildTable.TABLE_NAME, null, null);
+        try {
+            JSONArray jsonArray = childlist;
+            for (int i = 0; i < jsonArray.length(); i++) {
+
+                JSONObject jsonObjectChild = jsonArray.getJSONObject(i);
+
+                ChildContract chw = new ChildContract();
+                chw.sync(jsonObjectChild);
+                ContentValues values = new ContentValues();
+
+                values.put(ChildTable.COLUMN_ID, chw.getID());
+                values.put(ChildTable.COLUMN_UID, chw.getUID());
+                values.put(ChildTable.COLUMN_HHDT, chw.getHhDT());
+                values.put(ChildTable.COLUMN_TEHSIL, chw.getTehsil());
+                values.put(ChildTable.COLUMN_HFACILITY, chw.gethFacility());
+                values.put(ChildTable.COLUMN_LHWCODE, chw.getLhwCode());
+                values.put(ChildTable.COLUMN_HOUSEHOLD, chw.getHouseHold());
+                values.put(ChildTable.COLUMN_CHILDID, chw.getChildId());
+                values.put(ChildTable.COLUMN_UCCODE, chw.getUccode());
+                values.put(ChildTable.COLUMN_VILLAGENAME, chw.getVillagename());
+
+                db.insert(ChildTable.TABLE_NAME, null, values);
+            }
+
+        } catch (Exception e) {
+            Log.d(TAG, "syncChilds(e): " + e);
+        } finally {
+            db.close();
         }
     }
 
@@ -226,8 +276,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_ENDINGDATETIME, fc.getendingdatetime());
 
 
-
-
         // Insert the new row, returning the primary key value of the new row
         long newRowId;
         newRowId = db.insert(
@@ -256,7 +304,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 whereArgs);
     }
 
-    public int updateFormID() {
+    public int updateFormUID() {
         SQLiteDatabase db = this.getReadableDatabase();
 
 // New value for one column
@@ -491,7 +539,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selectionArgs);
         return count;
     }
-
 
 
     public int updatesE() {

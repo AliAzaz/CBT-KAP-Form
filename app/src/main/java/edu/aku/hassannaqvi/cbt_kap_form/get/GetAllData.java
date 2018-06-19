@@ -15,6 +15,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import edu.aku.hassannaqvi.cbt_kap_form.contracts.ChildContract;
 import edu.aku.hassannaqvi.cbt_kap_form.contracts.UsersContract.UsersTable;
 import edu.aku.hassannaqvi.cbt_kap_form.core.DatabaseHelper;
 import edu.aku.hassannaqvi.cbt_kap_form.core.MainApp;
@@ -58,8 +59,8 @@ public class GetAllData extends AsyncTask<String, String, String> {
         URL url = null;
         try {
             switch (syncClass) {
-                case "EnumBlock":
-                    // url = new URL(MainApp._HOST_URL + EnumBlockTable._URI);
+                case "ChildData":
+                     url = new URL(MainApp._HOST_URL + ChildContract.ChildTable._URI);
                     break;
                 case "User":
                     url = new URL(MainApp._HOST_URL + UsersTable._URI);
@@ -105,8 +106,8 @@ public class GetAllData extends AsyncTask<String, String, String> {
                     JSONArray jsonArray = new JSONArray(json);
 
                     switch (syncClass) {
-                        case "EnumBlock":
-                            //     db.syncEnumBlocks(jsonArray);
+                        case "ChildData":
+                                 db.syncChildData(jsonArray);
                             break;
                         case "User":
                             db.syncUsers(jsonArray);

@@ -129,14 +129,11 @@ public class SectionAActivity extends AppCompatActivity {
 
     public void setGPS() {
         SharedPreferences GPSPref = getSharedPreferences("GPSCoordinates", Context.MODE_PRIVATE);
-
-//        String date = DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(GPSPref.getString("Time", "0"))).toString();
-
         try {
             String lat = GPSPref.getString("Latitude", "0");
             String lang = GPSPref.getString("Longitude", "0");
             String acc = GPSPref.getString("Accuracy", "0");
-            String dt = GPSPref.getString("Time", "0");
+            String elevation = GPSPref.getString("Elevation", "0");
 
             if (lat == "0" && lang == "0") {
                 Toast.makeText(this, "Could not obtained GPS points", Toast.LENGTH_SHORT).show();
@@ -146,10 +143,11 @@ public class SectionAActivity extends AppCompatActivity {
 
             String date = DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(GPSPref.getString("Time", "0"))).toString();
 
-            MainApp.fc.setgpsLat(GPSPref.getString("Latitude", "0"));
-            MainApp.fc.setgpsLng(GPSPref.getString("Longitude", "0"));
-            MainApp.fc.setgpsAcc(GPSPref.getString("Accuracy", "0"));
+            MainApp.fc.setgpsLat(lat);
+            MainApp.fc.setgpsLng(lang);
+            MainApp.fc.setgpsAcc(acc);
             MainApp.fc.setgpsDT(date); // Timestamp is converted to date above
+            MainApp.fc.setgpsElev(elevation);
 
             Toast.makeText(this, "GPS set", Toast.LENGTH_SHORT).show();
 
@@ -173,7 +171,7 @@ public class SectionAActivity extends AppCompatActivity {
                     (MainApp.fc.getdeviceID() + MainApp.fc.get_ID()));
 
             // Update UID of Last Inserted Form
-//            db.updateFormsUID();
+            db.updateFormUID();
 
             return true;
         } else {

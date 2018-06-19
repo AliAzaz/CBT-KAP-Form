@@ -415,10 +415,11 @@ public class MainActivity extends Activity {
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
 
-            // Sync Random
-            /*new GetBLRandom(this).execute();*/
+            Toast.makeText(MainActivity.this, "Sync Child Data", Toast.LENGTH_LONG).show();
+            new GetAllData(this, "ChildData").execute();
+
             Toast.makeText(MainActivity.this, "Sync Users", Toast.LENGTH_LONG).show();
-            new GetAllData(this, "User").execute() ;
+            new GetAllData(this, "User").execute();
 
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = syncPref.edit();
