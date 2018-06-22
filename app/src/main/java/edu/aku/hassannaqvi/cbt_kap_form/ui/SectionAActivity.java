@@ -131,7 +131,7 @@ public class SectionAActivity extends AppCompatActivity {
                 finish();
 
                 startActivity(new Intent(this, SectionBActivity.class)
-                        .putExtra("skipFlag", childContract.getStudy_arm().equals("2") || childContract.getStudy_arm().equals("3")));
+                        .putExtra("skipFlag", childContract.getStudy_arm().equals("1")));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
