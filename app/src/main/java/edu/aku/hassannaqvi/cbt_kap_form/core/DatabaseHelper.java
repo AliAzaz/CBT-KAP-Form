@@ -41,7 +41,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static final String SQL_CREATE_FORMS = "CREATE TABLE "
             + FormsTable.TABLE_NAME + "("
-            + FormsTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            + FormsTable.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             FormsTable.COLUMN__UID + " TEXT," +
             FormsTable.COLUMN_PROJECTNAME + " TEXT," +
             FormsTable.COLUMN_FORMDATE + " TEXT," +
@@ -72,14 +72,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + ChildTable.TABLE_NAME + "("
             + ChildTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             ChildTable.COLUMN_UID + " TEXT," +
-            ChildTable.COLUMN_HHDT + " TEXT," +
-            ChildTable.COLUMN_TEHSIL + " TEXT," +
-            ChildTable.COLUMN_HFACILITY + " TEXT," +
-            ChildTable.COLUMN_LHWCODE + " TEXT," +
-            ChildTable.COLUMN_HOUSEHOLD + " TEXT," +
+            ChildTable.COLUMN_CHILD_NAME + " TEXT," +
+            ChildTable.COLUMN_FATHER_NAME + " TEXT," +
+            ChildTable.COLUMN_MOTHER_NAME + " TEXT," +
             ChildTable.COLUMN_CHILDID + " TEXT," +
-            ChildTable.COLUMN_UCCODE + " TEXT," +
-            ChildTable.COLUMN_VILLAGENAME + " TEXT"
+            ChildTable.COLUMN_STUDY_ARM + " TEXT"
             + " );";
 
     private static final String SQL_DELETE_USERS =
@@ -173,16 +170,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 chw.sync(jsonObjectChild);
                 ContentValues values = new ContentValues();
 
-                values.put(ChildTable.COLUMN_ID, chw.getID());
                 values.put(ChildTable.COLUMN_UID, chw.getUID());
-                values.put(ChildTable.COLUMN_HHDT, chw.getHhDT());
-                values.put(ChildTable.COLUMN_TEHSIL, chw.getTehsil());
-                values.put(ChildTable.COLUMN_HFACILITY, chw.gethFacility());
-                values.put(ChildTable.COLUMN_LHWCODE, chw.getLhwCode());
-                values.put(ChildTable.COLUMN_HOUSEHOLD, chw.getHouseHold());
+                values.put(ChildTable.COLUMN_CHILD_NAME, chw.getChname());
+                values.put(ChildTable.COLUMN_FATHER_NAME, chw.getFname());
+                values.put(ChildTable.COLUMN_MOTHER_NAME, chw.getMname());
                 values.put(ChildTable.COLUMN_CHILDID, chw.getChildId());
-                values.put(ChildTable.COLUMN_UCCODE, chw.getUccode());
-                values.put(ChildTable.COLUMN_VILLAGENAME, chw.getVillagename());
+                values.put(ChildTable.COLUMN_STUDY_ARM, chw.getStudy_arm());
 
                 db.insert(ChildTable.TABLE_NAME, null, values);
             }
@@ -249,7 +242,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
         values.put(FormsTable.COLUMN_PROJECTNAME, fc.getprojectName());
-        values.put(FormsTable.COLUMN__ID, fc.get_ID());
         values.put(FormsTable.COLUMN__UID, fc.get_UID());
         values.put(FormsTable.COLUMN_FORMDATE, fc.getformDate());
         values.put(FormsTable.COLUMN_USER, fc.getuser());
@@ -270,11 +262,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_GPSDT, fc.getgpsDT());
         values.put(FormsTable.COLUMN_GPSACC, fc.getgpsAcc());
         values.put(FormsTable.COLUMN_GPSELEV, fc.getgpsElev());
-        values.put(FormsTable.COLUMN_SYNCED, fc.getsynced());
-        values.put(FormsTable.COLUMN_SYNCED_DATE, fc.getsynced_date());
         values.put(FormsTable.COLUMN_APPVERSION, fc.getappVersion());
         values.put(FormsTable.COLUMN_ENDINGDATETIME, fc.getendingdatetime());
-
 
         // Insert the new row, returning the primary key value of the new row
         long newRowId;
@@ -389,7 +378,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFC;
     }
 
-
     public Collection<FormsContract> getTodayForms() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
@@ -485,6 +473,48 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public ChildContract getFollowUpChildData(String chID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                ChildTable.COLUMN_UID,
+                ChildTable.COLUMN_CHILD_NAME,
+                ChildTable.COLUMN_FATHER_NAME,
+                ChildTable.COLUMN_MOTHER_NAME,
+                ChildTable.COLUMN_CHILDID,
+                ChildTable.COLUMN_STUDY_ARM
+        };
+        String whereClause = ChildTable.COLUMN_CHILDID + " =?";
+        String[] whereArgs = {chID};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = null;
+
+        ChildContract allFUP = null;
+        try {
+            c = db.query(
+                    ChildTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                allFUP = new ChildContract().hydrate(c);
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFUP;
+    }
 
     public int updatesA() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -540,7 +570,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return count;
     }
 
-
     public int updatesE() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -576,7 +605,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selectionArgs);
         return count;
     }
-
 
     public int updateEnding() {
         SQLiteDatabase db = this.getReadableDatabase();

@@ -72,7 +72,7 @@
                         android:layout_weight="60"
                         android:hint="@string/cka01"
                         android:inputType="number"
-                        android:maxLines="4"
+                        android:maxLength="4"
                         android:textColor="@android:color/black" />
 
                 </LinearLayout>
@@ -101,7 +101,6 @@
                         android:enabled="false"
                         android:hint="@string/cka02"
                         android:textColor="@android:color/black" />
-
 
                     <TextView
                         android:layout_width="match_parent"

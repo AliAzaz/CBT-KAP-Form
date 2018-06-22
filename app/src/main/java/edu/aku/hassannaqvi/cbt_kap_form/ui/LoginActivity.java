@@ -105,6 +105,9 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     @BindView(R.id.email_sign_in_button)
     Button mEmailSignInButton;
 
+    @BindView(R.id.testing)
+    TextView testing;
+
 
     @BindView(R.id.syncData)
     Button syncData;
@@ -184,8 +187,14 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         db = new DatabaseHelper(this);
 
 //        DB backup
-
         dbBackup();
+
+//        Testing visibility
+        if (Integer.valueOf(MainApp.versionName.split("\\.")[0]) > 0) {
+            testing.setVisibility(View.GONE);
+        } else {
+            testing.setVisibility(View.VISIBLE);
+        }
     }
 
     public void dbBackup() {

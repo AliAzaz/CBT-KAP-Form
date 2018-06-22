@@ -2,8 +2,8 @@ package edu.aku.hassannaqvi.cbt_kap_form.ui;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -24,6 +24,7 @@ public class SectionBActivity extends AppCompatActivity {
 
     ActivitySectionBBinding bi;
     DatabaseHelper db;
+    Boolean skipFlag = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,13 @@ public class SectionBActivity extends AppCompatActivity {
         db = new DatabaseHelper(this);
 
         setUpActivity();
+
+        skipFlag = getIntent().getBooleanExtra("skipFlag", false);
+
+        if (skipFlag) {
+            bi.fldGrpckb03.setVisibility(GONE);
+            bi.fldGrpckb04.setVisibility(GONE);
+        }
 
     }
 
@@ -357,21 +365,20 @@ public class SectionBActivity extends AppCompatActivity {
 
         }
 
+        if (!skipFlag) {
+            if (!validatorClass.EmptyCheckBox(this, bi.fldGrpckb03, bi.ckb0388, bi.ckb0388x, getString(R.string.ckb03))) {
+                return false;
+            }
 
-        if (!validatorClass.EmptyCheckBox(this, bi.fldGrpckb03, bi.ckb0388, bi.ckb0388x, getString(R.string.ckb03))) {
-            return false;
+
+            if (!validatorClass.EmptyCheckBox(this, bi.fldGrpckb04, bi.ckb0488, bi.ckb0488x, getString(R.string.ckb04))) {
+                return false;
+            }
         }
-
-
-        if (!validatorClass.EmptyCheckBox(this, bi.fldGrpckb04, bi.ckb0488, bi.ckb0488x, getString(R.string.ckb04))) {
-            return false;
-        }
-
 
         if (!validatorClass.EmptyCheckBox(this, bi.fldGrpckb05, bi.ckb0588, bi.ckb0588x, getString(R.string.ckb05))) {
             return false;
         }
-
 
         if (!validatorClass.EmptyCheckBox(this, bi.fldGrpckb06, bi.ckb0688, bi.ckb0688x, getString(R.string.ckb06))) {
             return false;
@@ -447,7 +454,6 @@ public class SectionBActivity extends AppCompatActivity {
         }
 
     }
-
 
 
 }

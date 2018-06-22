@@ -23,11 +23,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="2dp"
             android:background="@color/colorPrimaryDark"
             android:gravity="center"
             android:text="@string/ckbheading"
-            android:textSize="40sp" />
+            android:textSize="35sp" />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -43,7 +42,6 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
                     android:background="@color/colorPrimary"
                     android:text="@string/ckb01"
                     android:textAppearance="?android:attr/textAppearanceLarge"
@@ -450,21 +448,22 @@
                         android:visibility='@{ckb02ja.checked ? View.VISIBLE : View.GONE}' />
 
                 </LinearLayout>
-                <!--ckb03-->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/ckb03"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
 
+                <!--ckb03-->
                 <LinearLayout
                     android:id="@+id/fldGrpckb03"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:background="@color/colorPrimary"
+                        android:text="@string/ckb03"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@android:color/white" />
 
                     <CheckBox
                         android:id="@+id/ckb03a"
@@ -511,22 +510,21 @@
 
                 </LinearLayout>
 
-
                 <!--ckb04-->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/ckb04"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
-
                 <LinearLayout
                     android:id="@+id/fldGrpckb04"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:background="@color/colorPrimary"
+                        android:text="@string/ckb04"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@android:color/white" />
 
                     <CheckBox
                         android:id="@+id/ckb04a"
@@ -581,22 +579,21 @@
 
                 </LinearLayout>
 
-
-                <!--ckb05-->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/ckb05"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
-
                 <LinearLayout
                     android:id="@+id/fldGrpckb05"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+
+                    <!--ckb05-->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:background="@color/colorPrimary"
+                        android:text="@string/ckb05"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@android:color/white" />
 
                     <CheckBox
                         android:id="@+id/ckb05a"
@@ -643,22 +640,21 @@
 
                 </LinearLayout>
 
-
-                <!--ckb06-->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/ckb06"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
-
                 <LinearLayout
                     android:id="@+id/fldGrpckb06"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+
+                    <!--ckb06-->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:background="@color/colorPrimary"
+                        android:text="@string/ckb06"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@android:color/white" />
 
                     <CheckBox
                         android:id="@+id/ckb06a"

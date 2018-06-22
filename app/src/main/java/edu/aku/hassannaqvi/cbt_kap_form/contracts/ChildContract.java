@@ -10,29 +10,22 @@ public class ChildContract {
 
     private String ID = "";
     private String UID = "";
-    private String hhDT = ""; // Date
-    private String tehsil = "0000"; // Tehsil code
-    private String hFacility = ""; // HF
-    private String uccode = ""; // uc code
-    private String villagename = ""; // Village code
-    private String lhwCode = ""; // lhw Code
-    private String houseHold = ""; // HH no.
+    private String chname = "0000"; // Tehsil code
+    private String fname = ""; // HF
+    private String study_arm = ""; // Village code
+    private String mname = ""; // lhw Code
     private String childId = ""; // Index Child ID
 
     public ChildContract() {
     }
 
     public ChildContract sync(JSONObject jsonObject) throws JSONException {
-        this.ID = jsonObject.getString(ChildTable.COLUMN_ID);
         this.UID = jsonObject.getString(ChildTable.COLUMN_UID);
-        this.hhDT = jsonObject.getString(ChildTable.COLUMN_HHDT);
-        this.tehsil = jsonObject.getString(ChildTable.COLUMN_TEHSIL);
-        this.hFacility = jsonObject.getString(ChildTable.COLUMN_HFACILITY);
-        this.lhwCode = jsonObject.getString(ChildTable.COLUMN_LHWCODE);
-        this.houseHold = jsonObject.getString(ChildTable.COLUMN_HOUSEHOLD);
+        this.chname = jsonObject.getString(ChildTable.COLUMN_CHILD_NAME);
+        this.fname = jsonObject.getString(ChildTable.COLUMN_FATHER_NAME);
+        this.mname = jsonObject.getString(ChildTable.COLUMN_MOTHER_NAME);
         this.childId = jsonObject.getString(ChildTable.COLUMN_CHILDID);
-        this.uccode = jsonObject.getString(ChildTable.COLUMN_UCCODE);
-        this.villagename = jsonObject.getString(ChildTable.COLUMN_VILLAGENAME);
+        this.study_arm = jsonObject.getString(ChildTable.COLUMN_STUDY_ARM);
 
         return this;
     }
@@ -53,44 +46,28 @@ public class ChildContract {
         this.UID = UID;
     }
 
-    public String getHhDT() {
-        return hhDT;
+    public String getChname() {
+        return chname;
     }
 
-    public void setHhDT(String hhDT) {
-        this.hhDT = hhDT;
+    public void setChname(String chname) {
+        this.chname = chname;
     }
 
-    public String getTehsil() {
-        return tehsil;
+    public String getFname() {
+        return fname;
     }
 
-    public void setTehsil(String tehsil) {
-        this.tehsil = tehsil;
+    public void setFname(String fname) {
+        this.fname = fname;
     }
 
-    public String gethFacility() {
-        return hFacility;
+    public String getMname() {
+        return mname;
     }
 
-    public void sethFacility(String hFacility) {
-        this.hFacility = hFacility;
-    }
-
-    public String getLhwCode() {
-        return lhwCode;
-    }
-
-    public void setLhwCode(String lhwCode) {
-        this.lhwCode = lhwCode;
-    }
-
-    public String getHouseHold() {
-        return houseHold;
-    }
-
-    public void setHouseHold(String houseHold) {
-        this.houseHold = houseHold;
+    public void setMname(String mname) {
+        this.mname = mname;
     }
 
     public String getChildId() {
@@ -101,33 +78,21 @@ public class ChildContract {
         this.childId = childId;
     }
 
-    public String getUccode() {
-        return uccode;
+    public String getStudy_arm() {
+        return study_arm;
     }
 
-    public void setUccode(String uccode) {
-        this.uccode = uccode;
-    }
-
-    public String getVillagename() {
-        return villagename;
-    }
-
-    public void setVillagename(String villagename) {
-        this.villagename = villagename;
+    public void setStudy_arm(String study_arm) {
+        this.study_arm = study_arm;
     }
 
     public ChildContract hydrate(Cursor cursor) {
-        this.ID = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_ID));
         this.UID = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_UID));
-        this.hhDT = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_HHDT));
-        this.tehsil = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_TEHSIL));
-        this.hFacility = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_HFACILITY));
-        this.lhwCode = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_LHWCODE));
-        this.houseHold = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_HOUSEHOLD));
+        this.chname = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_CHILD_NAME));
+        this.fname = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_FATHER_NAME));
+        this.mname = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_MOTHER_NAME));
         this.childId = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_CHILDID));
-        this.uccode = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_UCCODE));
-        this.villagename = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_VILLAGENAME));
+        this.study_arm = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_STUDY_ARM));
 
         return this;
     }
@@ -135,18 +100,15 @@ public class ChildContract {
     public static abstract class ChildTable implements BaseColumns {
 
         public static final String TABLE_NAME = "childCBTData";
-        public static final String _URI = "cbtdata.php";
+        public static final String _URI = "enrolled.php";
 
         public static final String COLUMN_ID = "_id";
         public static final String COLUMN_UID = "uid";
-        public static final String COLUMN_HHDT = "hhdt";
-        public static final String COLUMN_TEHSIL = "tehsil";
-        public static final String COLUMN_HFACILITY = "hfacility";
-        public static final String COLUMN_LHWCODE = "lhwcode";
-        public static final String COLUMN_HOUSEHOLD = "household";
+        public static final String COLUMN_CHILD_NAME = "crb01";
+        public static final String COLUMN_FATHER_NAME = "cra06";
+        public static final String COLUMN_MOTHER_NAME = "cra09";
         public static final String COLUMN_CHILDID = "childid";
-        public static final String COLUMN_UCCODE = "uccode";
-        public static final String COLUMN_VILLAGENAME = "villagename";
+        public static final String COLUMN_STUDY_ARM = "cra04";
 
     }
 }

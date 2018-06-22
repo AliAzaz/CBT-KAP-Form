@@ -12,6 +12,7 @@ import android.text.TextWatcher;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -20,6 +21,7 @@ import org.json.JSONObject;
 import java.util.Date;
 
 import edu.aku.hassannaqvi.cbt_kap_form.R;
+import edu.aku.hassannaqvi.cbt_kap_form.contracts.ChildContract;
 import edu.aku.hassannaqvi.cbt_kap_form.contracts.FormsContract;
 import edu.aku.hassannaqvi.cbt_kap_form.core.DatabaseHelper;
 import edu.aku.hassannaqvi.cbt_kap_form.core.MainApp;
@@ -31,6 +33,7 @@ public class SectionAActivity extends AppCompatActivity {
     private static final String TAG = SectionAActivity.class.getName();
     ActivitySectionABinding bi;
     DatabaseHelper db;
+    ChildContract childContract;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,15 +69,51 @@ public class SectionAActivity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-        MainApp.endActivity(this, this);
+
+        if (!bi.cka01.getText().toString().isEmpty()) {
+            MainApp.endActivity(this, this);
+        } else {
+            bi.cka01.setError("Requires Child ID!!");
+        }
     }
 
     public void BtnCheckChild() {
 
-        if (formValidation()) {
+        if (!bi.cka01.getText().toString().isEmpty()) {
 
+            bi.cka01.setError(null);
+
+            childContract = db.getFollowUpChildData(bi.cka01.getText().toString());
+
+            if (childContract != null) {
+
+                bi.fldGrpcka01.setVisibility(View.VISIBLE);
+
+                bi.cka02.setText(childContract.getChname().toString());
+
+                bi.cka03.clearCheck();
+                for (int i = 0; i < bi.cka03.getChildCount(); i++) {
+                    View v = bi.cka03.getChildAt(i);
+                    if (v instanceof RadioButton) {
+                        RadioButton rb = (RadioButton) v;
+                        rb.setEnabled(false);
+                    }
+                }
+
+                bi.cka03.check(childContract.getStudy_arm().equals("1") ? bi.cka03a.getId() :
+                        childContract.getStudy_arm().equals("2") ? bi.cka03b.getId() :
+                                childContract.getStudy_arm().equals("3") ? bi.cka03c.getId() :
+                                        childContract.getStudy_arm().equals("4") ? bi.cka03d.getId() :
+                                                bi.cka03e.getId()
+                );
+
+
+            } else {
+                Toast.makeText(this, "Sorry!! Child not found.", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            bi.cka01.setError("Requires Child ID!!");
         }
-
     }
 
     public void BtnContinue() {
@@ -91,7 +130,8 @@ public class SectionAActivity extends AppCompatActivity {
 
                 finish();
 
-                startActivity(new Intent(this, SectionBActivity.class));
+                startActivity(new Intent(this, SectionBActivity.class)
+                        .putExtra("skipFlag", childContract.getStudy_arm().equals("2") || childContract.getStudy_arm().equals("3")));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -111,8 +151,17 @@ public class SectionAActivity extends AppCompatActivity {
         MainApp.fc.setuser(MainApp.userName);
         MainApp.fc.setdeviceID(Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID));
+        MainApp.fc.setappVersion(MainApp.versionName + "." + MainApp.versionCode);
+
+        MainApp.fc.setchild_id(bi.cka01.getText().toString());
+        MainApp.fc.setchild_name(bi.cka02.getText().toString());
+        MainApp.fc.setstudy_arm(bi.cka03a.isChecked() ? "1" : bi.cka03b.isChecked() ? "2"
+                : bi.cka03c.isChecked() ? "3" : bi.cka03d.isChecked() ? "4" : bi.cka03e.isChecked() ? "5" : "0");
 
         JSONObject sA = new JSONObject();
+        sA.put("child_uid", childContract.getUID());
+        sA.put("child_f_name", childContract.getFname());
+        sA.put("child_m_name", childContract.getMname());
 
         MainApp.fc.setsA(String.valueOf(sA));
 
@@ -124,6 +173,11 @@ public class SectionAActivity extends AppCompatActivity {
         if (!validatorClass.EmptyTextBox(this, bi.cka01, getString(R.string.cka01))) {
             return false;
         }
+
+        if (!validatorClass.EmptyRadioButton(this, bi.cka03, bi.cka03e, getString(R.string.cka03))) {
+            return false;
+        }
+
         return true;
     }
 
