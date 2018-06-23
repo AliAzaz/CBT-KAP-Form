@@ -342,7 +342,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_APPVERSION,
                 FormsTable.COLUMN_ENDINGDATETIME
 
-
         };
         String whereClause = FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + " = '' ";
         String[] whereArgs = null;
@@ -350,7 +349,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String having = null;
 
         String orderBy =
-                FormsTable._ID + " ASC";
+                FormsTable.COLUMN__ID + " ASC";
 
         Collection<FormsContract> allFC = new ArrayList<FormsContract>();
         try {

@@ -398,8 +398,8 @@ public class FormsContract {
         public static final String TABLE_NAME = "forms";
         public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
         public static final String COLUMN_PROJECTNAME = "projectname";
-        public static final String COLUMN__ID  = "_id ";
-        public static final String COLUMN__UID  = "_uid ";
+        public static final String COLUMN__ID  = "_id";
+        public static final String COLUMN__UID  = "_uid";
         public static final String COLUMN_FORMDATE = "formdate";
         public static final String COLUMN_USER = "user";
         public static final String COLUMN_CHILD_ID = "child_id";
@@ -412,15 +412,15 @@ public class FormsContract {
         public static final String COLUMN_SFGH = "sfgh";
         public static final String COLUMN_ISTATUS = "istatus";
         public static final String COLUMN_ISTATUS88X = "istatus88x";
-        public static final String COLUMN_DEVICEID  = "deviceid ";
-        public static final String COLUMN_DEVICETAGID  = "devicetagid ";
+        public static final String COLUMN_DEVICEID  = "deviceid";
+        public static final String COLUMN_DEVICETAGID  = "devicetagid";
         public static final String COLUMN_GPSLAT = "gpslat";
         public static final String COLUMN_GPSLNG = "gpslng";
         public static final String COLUMN_GPSDT = "gpsdt";
         public static final String COLUMN_GPSACC = "gpsacc";
         public static final String COLUMN_GPSELEV = "gpselev";
-        public static final String COLUMN_SYNCED  = "synced ";
-        public static final String COLUMN_SYNCED_DATE  = "synced_date ";
+        public static final String COLUMN_SYNCED  = "synced";
+        public static final String COLUMN_SYNCED_DATE  = "synced_date";
         public static final String COLUMN_APPVERSION = "appversion";
         public static final String COLUMN_ENDINGDATETIME = "endingdatetime";
 
