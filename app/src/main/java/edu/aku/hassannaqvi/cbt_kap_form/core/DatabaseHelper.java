@@ -283,7 +283,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_SYNCED_DATE, new Date().toString());
 
 // Which row to update, based on the title
-        String where = FormsTable._ID + " = ?";
+        String where = FormsTable.COLUMN__ID + " = ?";
         String[] whereArgs = {id};
 
         int count = db.update(
